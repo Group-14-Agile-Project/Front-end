@@ -9,9 +9,9 @@ export default function Login() {
 
 
   return (
-    <LinearGradient colors={['#02080e', '#a09d9e','#02080e']}
+    <LinearGradient colors={['#02080e','#1e1e1e','#a59d9e']}
     style={{ flex: 1 }} >
-        <View>
+        <View >
             {/* Logo and the name  */}
             <View style={loginStyles.container}>
                 <View style={loginStyles.logoContainer}>
@@ -29,6 +29,18 @@ export default function Login() {
                 onChangeText={onChangeNumber}
                 value={number}
                 placeholder="Student ID"
+                placeholderTextColor="#a09d9e"
+                keyboardType="numeric"
+                />
+            </View>
+
+            <View style={loginStyles.inpContainer2}>
+                    <TextInput
+                style={loginStyles.input}
+                onChangeText={onChangeNumber}
+                value={number}
+                placeholder="Pin"
+                placeholderTextColor="#a09d9e"
                 keyboardType="numeric"
                 />
             </View>
@@ -39,6 +51,10 @@ export default function Login() {
 }
 
 const loginStyles = StyleSheet.create({
+    mainContainer: {
+        backgroundColor: "#000000",
+    },
+
     container: {
         flexDirection: 'row', // Align children horizontally
         padding: 16,
@@ -76,17 +92,21 @@ const loginStyles = StyleSheet.create({
       },
 
       input: {
-        width: 236,
+        width: 158,
         height: 45,
         margin: 12,
         borderWidth: 2,
         padding: 10,
         borderRadius: 25,
-        color: "#fff"
+        borderColor: '#a09d9e',
+        textAlign: 'center',
       },
 
       inpContainer: {
         marginTop: 50,
+        alignItems: "center",
+      },
+      inpContainer2: {
         alignItems: "center",
       }
 
