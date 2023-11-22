@@ -22,28 +22,33 @@ export default function Login() {
                 </View>
             </View>
 
-            {/* ID and Pin Input */}
-            <View style={loginStyles.inpContainer}>
-                    <TextInput
-                style={loginStyles.input}
-                onChangeText={onChangeNumber}
-                value={number}
-                placeholder="Student ID"
-                placeholderTextColor="#a09d9e"
-                keyboardType="numeric"
-                />
-            </View>
+            {/* Start of ID and Pin Input */}
+            <View>
+                <View style={loginStyles.inpContainer}>
+                        <TextInput
+                    style={loginStyles.input}
+                    onChangeText={onChangeNumber}
+                    value={number}
+                    placeholder="Student ID"
+                    placeholderTextColor="#a09d9e"
+                    keyboardType="numeric"
+                    />
+                </View>
 
-            <View style={loginStyles.inpContainer2}>
-                    <TextInput
-                style={loginStyles.input}
-                onChangeText={onChangeNumber}
-                value={number}
-                placeholder="Pin"
-                placeholderTextColor="#a09d9e"
-                keyboardType="numeric"
-                />
+                <View style={loginStyles.inpContainer2}>
+                        <TextInput
+                    style={loginStyles.input}
+                    onChangeText={onChangeNumber}
+                    value={number}
+                    placeholder="Pin"
+                    placeholderTextColor="#a09d9e"
+                    keyboardType="numeric"
+                    />
+                </View>
             </View>
+            {/* End of ID and Pin Input View */}
+
+
 
         </View>
     </LinearGradient>
