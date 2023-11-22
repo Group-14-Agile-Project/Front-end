@@ -3,10 +3,8 @@ import React from 'react'
 import {LinearGradient} from 'expo-linear-gradient';
 
 export default function Login() {
-    const TextInputCom = () => {
-        const [text, onChangeText] = React.useState('');
-        const [number, onChangeNumber] = React.useState('');
-    }
+    const [text, onChangeText] = React.useState('');
+    const [number, onChangeNumber] = React.useState('');
 
 
 
@@ -25,8 +23,14 @@ export default function Login() {
             </View>
 
             {/* ID and Pin Input */}
-            <View>
-
+            <View style={loginStyles.inpContainer}>
+                    <TextInput
+                style={loginStyles.input}
+                onChangeText={onChangeNumber}
+                value={number}
+                placeholder="Student ID"
+                keyboardType="numeric"
+                />
             </View>
 
         </View>
@@ -70,6 +74,21 @@ const loginStyles = StyleSheet.create({
         flex: 1, // Take 1/3 of the available space
         alignItems: 'flex-start', // Align items to the start (left)
       },
+
+      input: {
+        width: 236,
+        height: 45,
+        margin: 12,
+        borderWidth: 2,
+        padding: 10,
+        borderRadius: 25,
+        color: "#fff"
+      },
+
+      inpContainer: {
+        marginTop: 50,
+        alignItems: "center",
+      }
 
 })
 
