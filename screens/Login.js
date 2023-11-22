@@ -1,8 +1,15 @@
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet, Image, TextInput } from 'react-native'
 import React from 'react'
 import {LinearGradient} from 'expo-linear-gradient';
 
 export default function Login() {
+    const TextInputCom = () => {
+        const [text, onChangeText] = React.useState('');
+        const [number, onChangeNumber] = React.useState('');
+    }
+
+
+
   return (
     <LinearGradient colors={['#02080e', '#a09d9e','#02080e']}
     style={{ flex: 1 }} >
@@ -19,7 +26,7 @@ export default function Login() {
 
             {/* ID and Pin Input */}
             <View>
-            
+
             </View>
 
         </View>
