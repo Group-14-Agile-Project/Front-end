@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity, Button } from 'react-native'
+import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity, Alert } from 'react-native'
 import React from 'react'
 import {LinearGradient} from 'expo-linear-gradient';
 // import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -6,9 +6,20 @@ import {LinearGradient} from 'expo-linear-gradient';
 export default function Login() {
     const [userId, onChangeId] = React.useState('');
     const [pin, onChangeNumber] = React.useState('');
+    const [errors, setErrors] = React.useState({});
 
+    const validateForm = () => {
+        let errors = {};
 
+        if (!userId) errors.userId = 'ID is required';
+        if (!pin) errors.pin = 'pin is required';
 
+        setErrors(errors);
+
+        return Object.keys(errors).length === 0;
+        
+
+    }
 
   return (
     <LinearGradient colors={['#02080e','#1e1e1e','#a59d9e']}
@@ -36,6 +47,9 @@ export default function Login() {
                     keyboardType="numeric"
                     />
                 </View>
+                {
+                    errors.userId ? <Text style={loginStyles.errorText}>{errors.userId}</Text> : null
+                }
 
                 <View style={loginStyles.inpContainer2}>
                         <TextInput
@@ -47,6 +61,9 @@ export default function Login() {
                     keyboardType="numeric"
                     />
                 </View>
+                {
+                    errors.pin ? <Text style={loginStyles.errorText}>{errors.pin}</Text> : null
+                }
             </View>
             {/* End of ID and Pin Input View */}
             <TouchableOpacity>
@@ -151,6 +168,11 @@ const loginStyles = StyleSheet.create({
         marginLeft: 140,
         marginTop: 19,
       },
+
+      errorText:{
+        color: "red",
+        marginBottom: 10,
+      }
 
 })
 
