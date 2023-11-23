@@ -4,8 +4,9 @@ import {LinearGradient} from 'expo-linear-gradient';
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function Login() {
-    const [text, onChangeText] = React.useState('');
-    const [number, onChangeNumber] = React.useState('');
+    const [userId, onChangeId] = React.useState('');
+    const [pin, onChangeNumber] = React.useState('');
+
 
 
 
@@ -28,8 +29,8 @@ export default function Login() {
                 <View style={loginStyles.inpContainer}>
                         <TextInput
                     style={loginStyles.input}
-                    onChangeText={onChangeNumber}
-                    value={number}
+                    onChangeText={onChangeId}
+                    value={userId}
                     placeholder="Student ID"
                     placeholderTextColor="#a09d9e"
                     keyboardType="numeric"
@@ -38,9 +39,9 @@ export default function Login() {
 
                 <View style={loginStyles.inpContainer2}>
                         <TextInput
-                    style={loginStyles.input}
+                    style={loginStyles.input2}
                     onChangeText={onChangeNumber}
-                    value={number}
+                    value={pin}
                     placeholder="Pin"
                     placeholderTextColor="#a09d9e"
                     keyboardType="numeric"
@@ -56,8 +57,14 @@ export default function Login() {
                 <Text style={{textAlign: "center", fontWeight: 'bold',}}>Login</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity>
-                <Text style={{color: "white", textAlign: 'center'}}>Don't have and account? <TouchableOpacity><Text style={{backgroundColor: "#fff", color: "#000",borderRadius: 10, paddingHorizontal: 5}}>Sign up</Text></TouchableOpacity></Text>
+            <TouchableOpacity style={{marginTop: 20, flexDirection: "row", marginLeft: 100}}>
+                <Text style={{color: "white", textAlign: 'center'}}>Don't have and account? 
+                </Text>
+                <TouchableOpacity style={{marginLeft: 10,}}>
+                    <Text style={{backgroundColor: "#fff", color: "#000",borderRadius: 10, paddingHorizontal: 10, }}>
+                        Sign up
+                    </Text>
+                </TouchableOpacity>
             </TouchableOpacity>
 
         </View>
@@ -113,6 +120,19 @@ const loginStyles = StyleSheet.create({
         borderRadius: 25,
         borderColor: '#a09d9e',
         textAlign: 'center',
+        color: "#fff"
+      },
+
+      input2: {
+        width: 170,
+        height: 45,
+        margin: 12,
+        borderWidth: 2,
+        padding: 10,
+        borderRadius: 25,
+        borderColor: '#a09d9e',
+        textAlign: 'center',
+        color: "#fff"
       },
 
       inpContainer: {
