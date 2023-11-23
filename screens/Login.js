@@ -17,8 +17,15 @@ export default function Login() {
         setErrors(errors);
 
         return Object.keys(errors).length === 0;
-        
+    }
 
+    const handleSubmit = () => {
+        if (validateForm()) {
+            console.log('submitted', userId, pin);
+            onChangeId("");
+            onChangeNumber("");
+            setErrors({});
+        }
     }
 
   return (
