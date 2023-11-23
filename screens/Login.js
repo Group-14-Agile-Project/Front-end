@@ -56,6 +56,9 @@ export default function Login() {
                 <Text style={{textAlign: "center", fontWeight: 'bold',}}>Login</Text>
             </TouchableOpacity>
 
+            <TouchableOpacity>
+                <Text style={{color: "white", textAlign: 'center'}}>Don't have and account? <TouchableOpacity><Text style={{backgroundColor: "#fff", color: "#000",borderRadius: 10, paddingHorizontal: 5}}>Sign up</Text></TouchableOpacity></Text>
+            </TouchableOpacity>
 
         </View>
     </LinearGradient>
