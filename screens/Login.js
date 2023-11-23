@@ -1,6 +1,7 @@
-import { View, Text, StyleSheet, Image, TextInput } from 'react-native'
+import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity, Button } from 'react-native'
 import React from 'react'
 import {LinearGradient} from 'expo-linear-gradient';
+// import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function Login() {
     const [text, onChangeText] = React.useState('');
@@ -47,7 +48,13 @@ export default function Login() {
                 </View>
             </View>
             {/* End of ID and Pin Input View */}
+            <TouchableOpacity>
+                <Text style={{color: "white", textAlign: 'center'}}>Forgot password? Reset</Text>
+            </TouchableOpacity>
 
+            <TouchableOpacity style={loginStyles.loginBtn}>
+                <Text style={{textAlign: "center", fontWeight: 'bold',}}>Login</Text>
+            </TouchableOpacity>
 
 
         </View>
@@ -73,8 +80,6 @@ const loginStyles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 20,
         padding: 20,
-        
-
     },
 
     logo: {
@@ -97,7 +102,7 @@ const loginStyles = StyleSheet.create({
       },
 
       input: {
-        width: 158,
+        width: 170,
         height: 45,
         margin: 12,
         borderWidth: 2,
@@ -113,7 +118,16 @@ const loginStyles = StyleSheet.create({
       },
       inpContainer2: {
         alignItems: "center",
-      }
+      },
+
+      loginBtn: {
+        backgroundColor: "#ffffff",
+        padding: 10,
+        borderRadius: 25,
+        width: 130,
+        marginLeft: 140,
+        marginTop: 19,
+      },
 
 })
 
