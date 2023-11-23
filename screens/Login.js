@@ -77,7 +77,7 @@ export default function Login() {
                 <Text style={{color: "white", textAlign: 'center'}}>Forgot password? Reset</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={loginStyles.loginBtn}>
+            <TouchableOpacity onPress={handleSubmit}  style={loginStyles.loginBtn}>
                 <Text style={{textAlign: "center", fontWeight: 'bold',}}>Login</Text>
             </TouchableOpacity>
 
@@ -179,6 +179,7 @@ const loginStyles = StyleSheet.create({
       errorText:{
         color: "red",
         marginBottom: 10,
+        textAlign: "center",
       }
 
 })
