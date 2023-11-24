@@ -9,7 +9,7 @@ export default function SignUp() {
             <ImageBackground source={require('../assets/ucc.png')}>
 
             </ImageBackground>
-            <Text style={{color: "#fff"}}>uuopijijopojpiui</Text>
+            <Text style={{color: "#fff"}}></Text>
         </View>
     </LinearGradient>
     
