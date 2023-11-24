@@ -1,9 +1,12 @@
 import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity, Alert } from 'react-native'
 import React from 'react'
 import {LinearGradient} from 'expo-linear-gradient';
+import { useNavigation } from '@react-navigation/native';
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function Login() {
+    const navigation = useNavigation();
+    
     const [userId, onChangeId] = React.useState('');
     const [pin, onChangeNumber] = React.useState('');
     const [errors, setErrors] = React.useState({});
@@ -17,7 +20,7 @@ export default function Login() {
             errors.userId = 'ID must be 8 characters';
           } else if (!/^\d+$/.test(userId)) {
             errors.userId = 'ID must contain only numbers';
-          }
+          } 
 
         if (!pin) {
             errors.pin = 'PIN is required';
@@ -32,6 +35,7 @@ export default function Login() {
 
     const handleSubmit = () => {
         if (validateForm()) {
+            navigation.navigate('SignUp');
             console.log('submitted', userId, pin);
             onChangeId("");
             onChangeNumber("");
