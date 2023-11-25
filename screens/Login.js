@@ -46,7 +46,7 @@ export default function Login() {
   return (
     <LinearGradient colors={['#02080e','#1e1e1e','#a59d9e']}
     style={{ flex: 1 }} >
-        <View >
+        <View style={{marginTop: 89}}>
             {/* Logo and the name  */}
             <View style={loginStyles.container}>
                 <View style={loginStyles.logoContainer}>
@@ -89,7 +89,7 @@ export default function Login() {
             </View>
             {/* End of ID and Pin Input View */}
             <TouchableOpacity>
-                <Text style={{color: "white", textAlign: 'center'}}>Forgot password? Reset</Text>
+                <Text style={{color: "white", textAlign: 'center'}}>Forgot password? <Text style={{color: "orange"}}>Reset</Text></Text>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={handleSubmit}  style={loginStyles.loginBtn}>
