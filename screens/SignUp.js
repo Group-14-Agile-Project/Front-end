@@ -1,16 +1,46 @@
 import React, { useState } from 'react';
-import { View, Text, Image, StyleSheet} from 'react-native';
+import { View, Text, Image, StyleSheet, TextInput} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import {Picker} from '@react-native-picker/picker';
 
 export default function SignUp() {
   const [selectedItem, setSelectedItem] = useState('');
+  const [text, onChangeText] = React.useState('')
 
   return (
     <LinearGradient colors={['#02080e','#1e1e1e','#a59d9e']} style={styles.container}>
       <Image style={styles.image} source={require('../assets/study.jpg')} />
       <View style={styles.contentContainer}>
         <Text style={styles.signUpText}>Create your account</Text>
+        <View>
+          <TextInput 
+            style={styles.input}
+            onChangeText={onChangeText}
+            value={text}
+            placeholder="Enter Name"
+            placeholderTextColor="#a09d9e"
+          />
+        </View>
+
+        <View>
+          <TextInput 
+            style={styles.input}
+            onChangeText={onChangeText}
+            value={text}
+            placeholder="Enter Name"
+            placeholderTextColor="#a09d9e"
+          />
+        </View>
+
+        <View>
+          <TextInput 
+            style={styles.input}
+            onChangeText={onChangeText}
+            value={text}
+            placeholder="Enter Name"
+            placeholderTextColor="#a09d9e"
+          />
+        </View>
         <View style={styles.pickerContainer}>
         <Picker
           selectedValue={selectedItem}
@@ -47,23 +77,30 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 250,
   },
+
   contentContainer: {
     paddingHorizontal: 20,
     paddingTop: 10,
   },
+
   signUpText: {
     color: '#fff',
     fontSize: 24,
     textAlign: 'center',
     marginTop: 10,
   },
+
   pickerInput: {
     marginTop: 20,
-    // backgroundColor: 'red', // You can change the background color if needed
     marginTop: -10,
     borderWidth: 1,
-    color: '#fff', // Text color
-    // paddingHorizontal: 8,
-    // paddingVertical: 10,
+    color: '#fff', 
   },
+
+  input: {
+    borderColor: "#fff",
+    borderWidth: 1,
+    padding: 2,
+    width: 308,
+  }
 });
