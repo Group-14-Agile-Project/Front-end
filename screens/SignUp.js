@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, StyleSheet, TextInput} from 'react-native';
+import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import {Picker} from '@react-native-picker/picker';
 
@@ -14,7 +14,7 @@ export default function SignUp() {
       <Image style={styles.image} source={require('../assets/study.jpg')} />
       <View style={styles.contentContainer}>
         <Text style={styles.signUpText}>Create your account</Text>
-        <View>
+        <View style={styles.inputView}>
           <TextInput 
             style={styles.input}
             onChangeText={onChangeName}
@@ -24,23 +24,25 @@ export default function SignUp() {
           />
         </View>
 
-        <View>
+        <View style={styles.inputView}>
           <TextInput 
             style={styles.input1}
             onChangeText={onChangeId}
             value={userId}
             placeholder="Enter Student ID"
             placeholderTextColor="#a09d9e"
+            keyboardType="numeric"
           />
         </View>
 
-        <View>
+        <View style={styles.inputView}>
           <TextInput 
             style={styles.input2}
             onChangeText={onChangePin}
             value={pin}
             placeholder="Enter a Pin"
             placeholderTextColor="#a09d9e"
+            keyboardType="numeric"
           />
         </View>
         <View style={styles.pickerContainer}>
@@ -54,9 +56,13 @@ export default function SignUp() {
           <Picker.Item label="Baseball" value="baseball" />
           <Picker.Item label="Hockey" value="hockey" />
           <Picker.Item label="Hockey" value="hockey" />
+          <Picker.Item label="Hockey" value="hockey" />
         </Picker>
         </View>
         
+        <TouchableOpacity style={styles.loginBtn}>
+          <Text style={{textAlign: "center", fontWeight: 'bold',}}>Submit</Text>
+        </TouchableOpacity>
       </View>
     </LinearGradient>
   );
@@ -66,6 +72,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+
+  main_view:{
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
   pickerContainer: {
     borderColor: "#fff",
     borderWidth: 1,
@@ -73,6 +85,7 @@ const styles = StyleSheet.create({
     width: 308,
     color: "white",
     marginTop: 19,
+    marginLeft: 32,
 
   },
 
@@ -100,19 +113,31 @@ const styles = StyleSheet.create({
     color: '#a09d9e', 
   },
 
+  inputView:{
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignItems: "center",
+  },
+
   input: {
     borderColor: "#fff",
     borderWidth: 1,
     padding: 2,
     width: 308,
+    height: 42,
+    marginTop: 30,
+    alignItems: "center",
+    textAlign: "center"
   },
 
   input1: {
     marginTop: 19,
     borderColor: "#fff",
     borderWidth: 1,
-    padding: 2,
+    padding: 8,
     width: 308,
+    height: 42,
+    fontSize: 16,
   },
   
   input2: {
@@ -121,6 +146,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 2,
     width: 308,
-  }
+  },
+  loginBtn: {
+    backgroundColor: "#ffffff",
+    padding: 15,
+    borderRadius: 25,
+    width: 130,
+    marginLeft: 140,
+    marginTop: 19,
+  },
 
 });
