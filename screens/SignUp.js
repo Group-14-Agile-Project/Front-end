@@ -66,12 +66,26 @@ export default function SignUp() {
           onValueChange={(itemValue) => setSelectedItem(itemValue)}
           style={styles.pickerInput}
         >
-          <Picker.Item label="Select your College" value="" />
+          <Picker.Item label="Select your Falculty" value="" />
           <Picker.Item label="Football" value="football" />
           <Picker.Item label="Baseball" value="baseball" />
           <Picker.Item label="Hockey" value="hockey" />
           <Picker.Item label="Hockey" value="hockey" />
           <Picker.Item label="Hockey" value="hockey" />
+        </Picker>
+        </View>
+
+        <View style={styles.pickerContainer}>
+        <Picker
+          selectedValue={selectedItem}
+          onValueChange={(itemValue) => setSelectedItem(itemValue)}
+          style={styles.pickerInput}
+        >
+          <Picker.Item label="Select your Department" value="" />
+          <Picker.Item label="100" value="L100" />
+          <Picker.Item label="200" value="L200" />
+          <Picker.Item label="300" value="L300" />
+          <Picker.Item label="400" value="L400" />
         </Picker>
         </View>
 
@@ -112,7 +126,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     width: 308,
     color: "white",
-    marginTop: 19,
+    marginTop: 16,
     marginLeft: 32,
     height: 42,
     paddingLeft: 0,
@@ -157,7 +171,7 @@ const styles = StyleSheet.create({
     padding: 2,
     width: 308,
     height: 42,
-    marginTop: 30,
+    marginTop: 18,
     alignItems: "center",
     height: 42,
     fontSize: 18,
