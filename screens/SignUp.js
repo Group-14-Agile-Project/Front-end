@@ -81,12 +81,11 @@ export default function SignUp() {
           onValueChange={(itemValue) => setSelectedItem(itemValue)}
           style={styles.pickerInput}
         >
-          <Picker.Item label="Select your College" value="" />
-          <Picker.Item label="Football" value="football" />
-          <Picker.Item label="Baseball" value="baseball" />
-          <Picker.Item label="Hockey" value="hockey" />
-          <Picker.Item label="Hockey" value="hockey" />
-          <Picker.Item label="Hockey" value="hockey" />
+          <Picker.Item label="Select your Level" value="" />
+          <Picker.Item label="100" value="L100" />
+          <Picker.Item label="200" value="L200" />
+          <Picker.Item label="300" value="L300" />
+          <Picker.Item label="400" value="L400" />
         </Picker>
         </View>
         
