@@ -59,9 +59,39 @@ export default function SignUp() {
           <Picker.Item label="Hockey" value="hockey" />
         </Picker>
         </View>
+
+        <View style={styles.pickerContainer}>
+        <Picker
+          selectedValue={selectedItem}
+          onValueChange={(itemValue) => setSelectedItem(itemValue)}
+          style={styles.pickerInput}
+        >
+          <Picker.Item label="Select your College" value="" />
+          <Picker.Item label="Football" value="football" />
+          <Picker.Item label="Baseball" value="baseball" />
+          <Picker.Item label="Hockey" value="hockey" />
+          <Picker.Item label="Hockey" value="hockey" />
+          <Picker.Item label="Hockey" value="hockey" />
+        </Picker>
+        </View>
+
+        <View style={styles.pickerContainer}>
+        <Picker
+          selectedValue={selectedItem}
+          onValueChange={(itemValue) => setSelectedItem(itemValue)}
+          style={styles.pickerInput}
+        >
+          <Picker.Item label="Select your College" value="" />
+          <Picker.Item label="Football" value="football" />
+          <Picker.Item label="Baseball" value="baseball" />
+          <Picker.Item label="Hockey" value="hockey" />
+          <Picker.Item label="Hockey" value="hockey" />
+          <Picker.Item label="Hockey" value="hockey" />
+        </Picker>
+        </View>
         
         <TouchableOpacity style={styles.loginBtn}>
-          <Text style={{textAlign: "center", fontWeight: 'bold',}}>Submit</Text>
+          <Text style={{textAlign: "center", fontWeight: 'bold', fontSize: 18,}}>Submit</Text>
         </TouchableOpacity>
       </View>
     </LinearGradient>
@@ -81,11 +111,12 @@ const styles = StyleSheet.create({
   pickerContainer: {
     borderColor: "#fff",
     borderWidth: 1,
-    height: 35,
     width: 308,
     color: "white",
     marginTop: 19,
     marginLeft: 32,
+    height: 42,
+    paddingLeft: 0,
 
   },
 
@@ -111,6 +142,8 @@ const styles = StyleSheet.create({
     marginTop: -10,
     borderWidth: 1,
     color: '#a09d9e', 
+    height: 42,
+    fontWeight: 600,
   },
 
   inputView:{
@@ -127,33 +160,39 @@ const styles = StyleSheet.create({
     height: 42,
     marginTop: 30,
     alignItems: "center",
-    textAlign: "center"
+    height: 42,
+    fontSize: 18,
+    paddingLeft: 18,
   },
 
   input1: {
     marginTop: 19,
     borderColor: "#fff",
     borderWidth: 1,
-    padding: 8,
+    paddingLeft: 18,
     width: 308,
     height: 42,
-    fontSize: 16,
+    fontSize: 18,
   },
   
   input2: {
     marginTop: 19,
     borderColor: "#fff",
     borderWidth: 1,
-    padding: 2,
+    paddingLeft: 18,
     width: 308,
+    height: 42,
+    fontSize: 18
   },
+
   loginBtn: {
     backgroundColor: "#ffffff",
     padding: 15,
     borderRadius: 25,
     width: 130,
-    marginLeft: 140,
+    marginLeft: 130,
     marginTop: 19,
+    fontSize: 0,
   },
 
 });
