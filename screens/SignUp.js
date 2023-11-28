@@ -5,7 +5,9 @@ import {Picker} from '@react-native-picker/picker';
 
 export default function SignUp() {
   const [selectedItem, setSelectedItem] = useState('');
-  const [text, onChangeText] = React.useState('')
+  const [name, onChangeName] = React.useState('');
+  const [userId, onChangeId] = React.useState('');
+  const [pin, onChangePin] = React.useState('');
 
   return (
     <LinearGradient colors={['#02080e','#1e1e1e','#a59d9e']} style={styles.container}>
@@ -15,8 +17,8 @@ export default function SignUp() {
         <View>
           <TextInput 
             style={styles.input}
-            onChangeText={onChangeText}
-            value={text}
+            onChangeText={onChangeName}
+            value={name}
             placeholder="Enter Name"
             placeholderTextColor="#a09d9e"
           />
@@ -24,20 +26,20 @@ export default function SignUp() {
 
         <View>
           <TextInput 
-            style={styles.input}
-            onChangeText={onChangeText}
-            value={text}
-            placeholder="Enter Name"
+            style={styles.input1}
+            onChangeText={onChangeId}
+            value={userId}
+            placeholder="Enter Student ID"
             placeholderTextColor="#a09d9e"
           />
         </View>
 
         <View>
           <TextInput 
-            style={styles.input}
-            onChangeText={onChangeText}
-            value={text}
-            placeholder="Enter Name"
+            style={styles.input2}
+            onChangeText={onChangePin}
+            value={pin}
+            placeholder="Enter a Pin"
             placeholderTextColor="#a09d9e"
           />
         </View>
@@ -50,6 +52,7 @@ export default function SignUp() {
           <Picker.Item label="Select your College" value="" />
           <Picker.Item label="Football" value="football" />
           <Picker.Item label="Baseball" value="baseball" />
+          <Picker.Item label="Hockey" value="hockey" />
           <Picker.Item label="Hockey" value="hockey" />
         </Picker>
         </View>
@@ -66,10 +69,10 @@ const styles = StyleSheet.create({
   pickerContainer: {
     borderColor: "#fff",
     borderWidth: 1,
-    height: 40,
+    height: 35,
     width: 308,
     color: "white",
-    marginTop: 100,
+    marginTop: 19,
 
   },
 
@@ -94,7 +97,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginTop: -10,
     borderWidth: 1,
-    color: '#fff', 
+    color: '#a09d9e', 
   },
 
   input: {
@@ -102,5 +105,22 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 2,
     width: 308,
+  },
+
+  input1: {
+    marginTop: 19,
+    borderColor: "#fff",
+    borderWidth: 1,
+    padding: 2,
+    width: 308,
+  },
+  
+  input2: {
+    marginTop: 19,
+    borderColor: "#fff",
+    borderWidth: 1,
+    padding: 2,
+    width: 308,
   }
+
 });
