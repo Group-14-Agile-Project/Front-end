@@ -187,7 +187,7 @@ const loginStyles = StyleSheet.create({
         padding: 10,
         borderRadius: 25,
         width: 130,
-        marginLeft: 140,
+        marginLeft: 159,
         marginTop: 19,
       },
 

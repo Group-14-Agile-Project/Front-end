@@ -176,6 +176,7 @@ const styles = StyleSheet.create({
     height: 42,
     fontSize: 18,
     paddingLeft: 18,
+    color: "#fff",
   },
 
   input1: {
@@ -186,6 +187,7 @@ const styles = StyleSheet.create({
     width: 308,
     height: 42,
     fontSize: 18,
+    color: "#fff",
   },
   
   input2: {
@@ -195,7 +197,8 @@ const styles = StyleSheet.create({
     paddingLeft: 18,
     width: 308,
     height: 42,
-    fontSize: 18
+    fontSize: 18,
+    color: "#fff",
   },
 
   loginBtn: {
