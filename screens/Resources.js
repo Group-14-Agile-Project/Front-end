@@ -35,7 +35,16 @@ export default function App() {
         </View>
 
         <View style={styles.downloadContainer}>
-          <Image style={styles.pdfImage} source={require('../assets/favicon.png')} />
+          <Image style={styles.pdfImage} source={require('../assets/pdf.png')} />
+          <Text style={{color: "#fff"}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
+          <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
+            {/* <FontAwesome name="download" size={1} color="#fff" /> */}
+            <Text>Download</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.downloadContainer}>
+          <Image style={styles.pdfImage} source={require('../assets/pdf.png')} />
+          <Text style={{color: "#fff"}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
           <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
             {/* <FontAwesome name="download" size={1} color="#fff" /> */}
             <Text>Download</Text>
@@ -57,6 +66,7 @@ const styles = StyleSheet.create({
     width: 400,
     height: 300,
     marginTop: -390,
+    display: ""
   },
 
   downloadContainer: {
@@ -68,8 +78,8 @@ const styles = StyleSheet.create({
   },
 
   pdfImage: {
-    width: 40,
-    height: 40,
+    width: 60,
+    height: 80,
     margin: 10,
   },
 
@@ -79,7 +89,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     margin: 50,
-    marginLeft: 300
+    marginLeft: 290,
   },
 
   textContainer: {
