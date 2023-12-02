@@ -22,6 +22,7 @@
     "expo-video-player": "^2.2.0",
     "react": "18.2.0",
     "react-native": "0.72.6",
+    "react-native-flexbox-grid": "^0.3.2",
     "react-native-gesture-handler": "~2.12.0",
     "react-native-linear-gradient": "^2.8.3",
     "react-native-pdf": "^6.7.3",

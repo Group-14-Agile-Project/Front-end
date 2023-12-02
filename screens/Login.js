@@ -97,7 +97,7 @@ export default function Login() {
             </TouchableOpacity>
 
             <TouchableOpacity style={{marginTop: 20, flexDirection: "row", marginLeft: 100}}>
-                <Text style={{color: "white", textAlign: 'center'}}>Don't have and account? 
+                <Text style={{color: "white", textAlign: 'center'}}>Don't have an account? 
                 </Text>
                 <TouchableOpacity style={{marginLeft: 10,}}>
                     <Text style={{backgroundColor: "#fff", color: "#000",borderRadius: 10, paddingHorizontal: 10, }}>

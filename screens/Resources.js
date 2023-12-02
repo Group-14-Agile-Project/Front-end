@@ -16,40 +16,38 @@ export default function App() {
   return (
     <LinearGradient colors={['#02080e', '#1e1e1e', '#a59d9e']} style={styles.container}>
       <View>
-        <Video
-          ref={video}
-          style={styles.video}
-          source={{
-            uri: 'https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
-          }}
-          useNativeControls
-          resizeMode={ResizeMode.CONTAIN}
-          isLooping
-          onPlaybackStatusUpdate={(status) => setStatus(() => status)}
-        />
+        <View style={{position: "fixed"}}>
+          <Video
+            ref={video}
+            style={styles.video}
+            source={{
+              uri: 'https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
+            }}
+            useNativeControls
+            resizeMode={ResizeMode.CONTAIN}
+            isLooping
+            onPlaybackStatusUpdate={(status) => setStatus(() => status)}
+          />
+        </View>
 
         <View style={styles.textContainer}>
-          <Text style={{ color: '#fff', fontSize: 19, marginTop: -99 }}>
+          <Text style={{ color: '#fff', fontSize: 19, marginTop: -100 }}>
             {'Download Resources on \n BSc. Computer Science'}
           </Text>
         </View>
 
-        <View style={styles.downloadContainer}>
-          <Image style={styles.pdfImage} source={require('../assets/pdf.png')} />
-          <Text style={{color: "#fff"}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
-          <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
-            {/* <FontAwesome name="download" size={1} color="#fff" /> */}
-            <Text>Download</Text>
-          </TouchableOpacity>
+        <View>
+          <View>
+            <Image style={styles.pdfImage} source={require('../assets/pdf.png')} />
+            <Text style={{color: "#fff", position: "absolute", marginLeft: 100, marginTop: -2,}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
+          </View>
+          <View>
+            <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
+              <Text>Download</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-        <View style={styles.downloadContainer}>
-          <Image style={styles.pdfImage} source={require('../assets/pdf.png')} />
-          <Text style={{color: "#fff"}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
-          <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
-            {/* <FontAwesome name="download" size={1} color="#fff" /> */}
-            <Text>Download</Text>
-          </TouchableOpacity>
-        </View>
+        
       </View>
     </LinearGradient>
   );
@@ -65,31 +63,27 @@ const styles = StyleSheet.create({
   video: {
     width: 400,
     height: 300,
-    marginTop: -390,
-    display: ""
-  },
-
-  downloadContainer: {
-    flexDirection: "row",
-    position: "relative",
-    alignItems: 'center',
-    marginBottom: -20,
-    marginTop: 90,
+    marginTop: -400,
+    position: "fixed",
   },
 
   pdfImage: {
     width: 60,
     height: 80,
-    margin: 10,
+    margin: 20,
+    marginTop: -25,
+    position: "absolute"
+
   },
 
   downloadBtn: {
-    position: "absolute",
+    // position: "absolute",
     backgroundColor: '#fff',
     padding: 10,
     borderRadius: 5,
-    margin: 50,
-    marginLeft: 290,
+    // margin: 50,
+    marginLeft: 280,
+    width: 100,
   },
 
   textContainer: {
