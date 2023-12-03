@@ -8,7 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 export default function SignUp() {
   const navigation = useNavigation();
 
-  const [selectedItem, setSelectedItem] = useState('');
+  
   const [name, onChangeName] = React.useState('');
   const [userId, onChangeId] = React.useState('');
   const [pin, onChangePin] = React.useState('');
@@ -72,6 +72,7 @@ export default function SignUp() {
       setDept("");
       setFalculty("");
       setLevel("");
+      onChangeName("");
       setErrors({});
   }
   }
@@ -186,7 +187,7 @@ export default function SignUp() {
           selectedValue={level}
           onChangeText={setLevel}
           value={level}
-          onValueChange={(Level) => setSelectedItem(Level)}
+          onValueChange={(Level) => setLevel(Level)}
           style={styles.pickerInput}
         >
           <Picker.Item label="Select your Level" value="" />
