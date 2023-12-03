@@ -13,7 +13,7 @@ export default function SignUp() {
   const [userId, onChangeId] = React.useState('');
   const [pin, onChangePin] = React.useState('');
   const [errors, setErrors] = React.useState({});
-  const [college, setCollege] = React.useState('');
+  const [college, setCollege] = useState('');
   const [falculty, setFalculty] = React.useState('');
   const [dept, setDept] = React.useState('');
   const [level, setLevel] = React.useState('');
@@ -124,10 +124,10 @@ export default function SignUp() {
 
         <View style={styles.pickerContainer}>
         <Picker
-          selectedValue={selectedItem}
+          selectedValue={college}
           onChangeText={setCollege}
           value={college}
-          onValueChange={(itemValue) => setSelectedItem(itemValue)}
+          onValueChange={(College) => setCollege(College)}
           style={styles.pickerInput}
         >
           <Picker.Item label="Select your College" value="" />
@@ -144,10 +144,10 @@ export default function SignUp() {
 
         <View style={styles.pickerContainer}>
         <Picker
-          selectedValue={selectedItem}
+          selectedValue={falculty}
           onChangeText={setFalculty}
           value={falculty}
-          onValueChange={(itemValue) => setSelectedItem(itemValue)}
+          onValueChange={(Falculty) => setFalculty(Falculty)}
           style={styles.pickerInput}
         >
           <Picker.Item label="Select your Falculty" value="" />
@@ -164,10 +164,10 @@ export default function SignUp() {
 
         <View style={styles.pickerContainer}>
         <Picker
-          selectedValue={selectedItem}
+          selectedValue={dept}
           onChangeText={setDept}
           value={dept}
-          onValueChange={(itemValue) => setSelectedItem(itemValue)}
+          onValueChange={(Department) => setDept(Department)}
           style={styles.pickerInput}
         >
           <Picker.Item label="Select your Department" value="" />
@@ -183,10 +183,10 @@ export default function SignUp() {
 
         <View style={styles.pickerContainer}>
         <Picker
-          selectedValue={selectedItem}
+          selectedValue={level}
           onChangeText={setLevel}
           value={level}
-          onValueChange={(itemValue) => setSelectedItem(itemValue)}
+          onValueChange={(Level) => setSelectedItem(Level)}
           style={styles.pickerInput}
         >
           <Picker.Item label="Select your Level" value="" />
@@ -222,7 +222,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     width: 308,
     color: "white",
-    marginTop: 16,
+    marginTop: 9,
     marginLeft: 32,
     height: 42,
     paddingLeft: 0,
@@ -276,7 +276,7 @@ const styles = StyleSheet.create({
   },
 
   input1: {
-    marginTop: 19,
+    marginTop: 18,
     borderColor: "#fff",
     borderWidth: 1,
     paddingLeft: 18,
@@ -299,7 +299,7 @@ const styles = StyleSheet.create({
 
   loginBtn: {
     backgroundColor: "#ffffff",
-    padding: 15,
+    padding: 10,
     borderRadius: 25,
     width: 130,
     marginLeft: 130,
@@ -309,7 +309,8 @@ const styles = StyleSheet.create({
 
   errorText:{
     color: "red",
-    marginBottom: 10,
+    fontSize: 12,
+    marginBottom: -10,
     textAlign: "center",
   },
 
