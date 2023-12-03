@@ -8,6 +8,8 @@ import Home from '../screens/Home';
 import Courses from '../screens/Courses';
 import Profile from '../screens/Profile';
 import Notification from '../screens/Notification';
+import { AntDesign, MaterialIcons, Feather, FontAwesome } from '@expo/vector-icons'; // Import icons as needed
+
 
 const Tab = createBottomTabNavigator();
 
@@ -24,7 +26,7 @@ export default function App() {
   return (
     <LinearGradient colors={['#02080e', '#1e1e1e', '#a59d9e']} style={styles.container}>
       <View>
-        <View style={{position: "fixed",}}>
+        <View style={{position: "fixed", }}>
           <Video
             ref={video}
             style={styles.video}
@@ -84,13 +86,41 @@ export default function App() {
           </ScrollView>
         </SafeAreaView>
 
-        <Tab.Navigator>
-          <Tab.Screen name='Home' component={Home}/>
-          <Tab.Screen name='Courses' component={Courses}/>
-          <Tab.Screen name='Notification' component={Notification}/>
-          <Tab.Screen name='Profile' component={Profile}/>
-        </Tab.Navigator>
+        
       </View>
+      <View style={styles.tabContainer}>
+      <Tab.Navigator
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName;
+
+              if (route.name === 'Home') {
+                iconName = focused ? 'home' : 'home'; // Change these to the actual icons you want to use
+                return <MaterialIcons name={iconName} size={40} color="black" />;
+              } else if (route.name === 'Courses') {
+                iconName = focused ? 'book' : 'library-books';
+                return <MaterialIcons name={iconName} size={size} color="#061337" />;
+              } else if (route.name === 'Notification') {
+                iconName = focused ? 'bell' : 'bell';
+                return <FontAwesome name={iconName} size={size} color="#061337" />;
+              } else if (route.name === 'Profile') {
+                iconName = focused ? 'user' : 'user';
+                return <AntDesign name={iconName} size={25} color="#061337" />;
+              }
+            },
+          })}
+          tabBarOptions={{
+            activeTintColor: 'black',
+            inactiveTintColor: 'gray',
+            style: { backgroundColor: 'black' },
+          }}
+        >
+              <Tab.Screen name='Home' component={Home} />
+              <Tab.Screen name='Courses' component={Courses}/>
+              <Tab.Screen name='Notification' component={Notification}/>
+              <Tab.Screen name='Profile' component={Profile}/>
+            </Tab.Navigator>
+        </View>
     </LinearGradient>
   );
 }
@@ -106,7 +136,7 @@ const styles = StyleSheet.create({
     width: 400,
     height: 300,
     marginTop: -200,
-    position: "fixed",
+    // position: "fixed",
   },
 
   pdfImage: {
@@ -132,5 +162,16 @@ const styles = StyleSheet.create({
     position: 'absolute',
     textAlign: 'center',
     marginLeft: 80,
+  },
+
+  tabContainer: {
+    position: "absolute",
+    bottom: 25,
+    left: 20,
+    right: 20,
+    elevation: 0,
+    height: 90,
+    borderRadius: 15,
+
   },
 });
