@@ -79,7 +79,17 @@ export default function SignUp() {
 
   return (
     <LinearGradient colors={['#02080e','#1e1e1e','#a59d9e']} style={styles.container}>
-      <Image style={styles.image} source={require('../assets/study.jpg')} />
+      <Image style={[styles.image, { opacity: 0.68 }]} source={require('../assets/study.jpg')} />
+
+      <View style={styles.impose}>
+        <View style={{position:"absolute"}}>
+            <Image style={{width:120, height: 120, marginTop: -200}} source={require('../assets/ucc.png')}/>
+        </View>
+        <View style={{position: "absolute"}}>
+            <Text style={{fontSize:18, marginTop: -198, marginLeft:100, color: "#fff", fontWeight: 500, }}>{"University of \n Cape Coast"}</Text>
+        </View>
+      </View>
+
       <View style={styles.contentContainer}>
         <Text style={styles.signUpText}>Create your account</Text>
         <View style={styles.inputView}>
@@ -234,6 +244,10 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 250,
   },
+  
+  darkOverlay: {
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Adjust the alpha value for the desired darkness
+  },
 
   contentContainer: {
     paddingHorizontal: 20,
@@ -314,5 +328,9 @@ const styles = StyleSheet.create({
     marginBottom: -10,
     textAlign: "center",
   },
+
+  impose:{
+
+  }
 
 });

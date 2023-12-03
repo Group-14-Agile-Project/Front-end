@@ -8,6 +8,7 @@ import Home from '../screens/Home';
 import Courses from '../screens/Courses';
 import Profile from '../screens/Profile';
 import Notification from '../screens/Notification';
+import SignUp from './SignUp';
 import { AntDesign, MaterialIcons, Feather, FontAwesome } from '@expo/vector-icons'; // Import icons as needed
 
 
@@ -86,8 +87,8 @@ export default function App() {
           </ScrollView>
         </SafeAreaView>
 
-        
       </View>
+
       <View style={styles.tabContainer}>
       <Tab.Navigator
           screenOptions={({ route }) => ({
@@ -96,7 +97,7 @@ export default function App() {
 
               if (route.name === 'Home') {
                 iconName = focused ? 'home' : 'home'; // Change these to the actual icons you want to use
-                return <MaterialIcons name={iconName} size={40} color="black" />;
+                return <MaterialIcons name={iconName} size={40} color="#061337" />;
               } else if (route.name === 'Courses') {
                 iconName = focused ? 'book' : 'library-books';
                 return <MaterialIcons name={iconName} size={size} color="#061337" />;
@@ -110,16 +111,16 @@ export default function App() {
             },
           })}
           tabBarOptions={{
-            activeTintColor: 'black',
+            activeTintColor: 'red',
             inactiveTintColor: 'gray',
             style: { backgroundColor: 'black' },
           }}
         >
-              <Tab.Screen name='Home' component={Home} />
-              <Tab.Screen name='Courses' component={Courses}/>
-              <Tab.Screen name='Notification' component={Notification}/>
-              <Tab.Screen name='Profile' component={Profile}/>
-            </Tab.Navigator>
+            <Tab.Screen name='Home' component={Home} />
+            <Tab.Screen name='Courses' component={Courses}/>
+            <Tab.Screen name='Notification' component={Notification}/>
+            <Tab.Screen name='Profile' component={Profile}/>
+        </Tab.Navigator>
         </View>
     </LinearGradient>
   );
@@ -171,7 +172,7 @@ const styles = StyleSheet.create({
     right: 20,
     elevation: 0,
     height: 90,
-    borderRadius: 15,
+    borderRadius: 50,
 
   },
 });

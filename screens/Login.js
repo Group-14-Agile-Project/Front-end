@@ -35,7 +35,7 @@ export default function Login() {
 
     const handleSubmit = () => {
         if (validateForm()) {
-            navigation.navigate('SignUp');
+            navigation.navigate('Resources');
             console.log('submitted', userId, pin);
             onChangeId("");
             onChangeNumber("");
