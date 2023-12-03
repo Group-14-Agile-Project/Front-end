@@ -2,12 +2,19 @@ import * as React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, Image, ScrollView, SafeAreaView } from 'react-native';
 import { Video, ResizeMode } from 'expo-av';
 import { LinearGradient } from 'expo-linear-gradient';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-// import { SafeAreaView } from 'react-native-safe-area-context';
+import Home from '../screens/Home';
+import Courses from '../screens/Courses';
+import Profile from '../screens/Profile';
+import Notification from '../screens/Notification';
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   const video = React.useRef(null);
   const [status, setStatus] = React.useState({});
+  
 
   const handleDownload = () => {
     // Implement your download logic here
@@ -77,9 +84,12 @@ export default function App() {
           </ScrollView>
         </SafeAreaView>
 
-            <NavigationContainer>
-              <Tabs />
-            </NavigationContainer>
+        <Tab.Navigator>
+          <Tab.Screen name='Home' component={Home}/>
+          <Tab.Screen name='Courses' component={Courses}/>
+          <Tab.Screen name='Notification' component={Notification}/>
+          <Tab.Screen name='Profile' component={Profile}/>
+        </Tab.Navigator>
       </View>
     </LinearGradient>
   );

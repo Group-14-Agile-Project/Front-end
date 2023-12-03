@@ -5,6 +5,7 @@ import Login from './screens/Login';
 import SignUp from './screens/SignUp';
 import Resources from './screens/Resources';
 
+
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -13,8 +14,8 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator screenOptions={{headerShown: false}}>
           <Stack.Screen name='Resources' component={Resources} />
-          <Stack.Screen name='SignUp' component={SignUp} />
           <Stack.Screen name='Login' component={Login} />
+          <Stack.Screen name='SignUp' component={SignUp} />
         </Stack.Navigator>
       </NavigationContainer>
     </View>
