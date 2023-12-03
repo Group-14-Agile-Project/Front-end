@@ -2,6 +2,7 @@ import * as React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, Image, ScrollView, SafeAreaView } from 'react-native';
 import { Video, ResizeMode } from 'expo-av';
 import { LinearGradient } from 'expo-linear-gradient';
+import { NavigationContainer } from '@react-navigation/native';
 // import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function App() {
@@ -76,6 +77,9 @@ export default function App() {
           </ScrollView>
         </SafeAreaView>
 
+            <NavigationContainer>
+              <Tabs />
+            </NavigationContainer>
       </View>
     </LinearGradient>
   );
