@@ -2,12 +2,20 @@ import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import {Picker} from '@react-native-picker/picker';
+import { useNavigation } from '@react-navigation/native';
+
 
 export default function SignUp() {
+  const navigation = useNavigation();
+
   const [selectedItem, setSelectedItem] = useState('');
   const [name, onChangeName] = React.useState('');
   const [userId, onChangeId] = React.useState('');
   const [pin, onChangePin] = React.useState('');
+
+  const handleSubmit = () => {
+     navigation.navigate('Login');
+  }
 
   return (
     <LinearGradient colors={['#02080e','#1e1e1e','#a59d9e']} style={styles.container}>
@@ -103,7 +111,7 @@ export default function SignUp() {
         </Picker>
         </View>
         
-        <TouchableOpacity style={styles.loginBtn}>
+        <TouchableOpacity onPress={handleSubmit} style={styles.loginBtn}>
           <Text style={{textAlign: "center", fontWeight: 'bold', fontSize: 18,}}>Submit</Text>
         </TouchableOpacity>
       </View>

@@ -43,6 +43,11 @@ export default function Login() {
         }
     }
 
+    const handleSignUp = () => {
+      navigation.navigate('SignUp');
+
+    }
+
   return (
     <LinearGradient colors={['#02080e','#1e1e1e','#a59d9e']}
     style={{ flex: 1 }} >
@@ -92,14 +97,14 @@ export default function Login() {
                 <Text style={{color: "white", textAlign: 'center'}}>Forgot password? <Text style={{color: "orange"}}>Reset</Text></Text>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={handleSubmit}  style={loginStyles.loginBtn}>
+            <TouchableOpacity  onPress={handleSubmit} style={loginStyles.loginBtn}>
                 <Text style={{textAlign: "center", fontWeight: 'bold',}}>Login</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={{marginTop: 20, flexDirection: "row", marginLeft: 100}}>
                 <Text style={{color: "white", textAlign: 'center'}}>Don't have an account? 
                 </Text>
-                <TouchableOpacity style={{marginLeft: 10,}}>
+                <TouchableOpacity onPress={handleSignUp} style={{marginLeft: 10,}}>
                     <Text style={{backgroundColor: "#fff", color: "#000",borderRadius: 10, paddingHorizontal: 10, }}>
                         Sign up
                     </Text>
