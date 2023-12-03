@@ -31,12 +31,13 @@ export default function App() {
         </View>
 
         <View style={styles.textContainer}>
-          <Text style={{ color: '#fff', fontSize: 19, marginTop: -100 }}>
+          <Text style={{ color: '#fff', fontSize: 19, marginTop: -30 }}>
             {'Download Resources on \n BSc. Computer Science'}
           </Text>
         </View>
 
-        <View>
+            <View style={{marginTop: 80}}>
+        <View style={{columnGap: 10,}}>
           <View>
             <Image style={styles.pdfImage} source={require('../assets/pdf.png')} />
             <Text style={{color: "#fff", position: "absolute", marginLeft: 100, marginTop: -2,}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
@@ -47,7 +48,32 @@ export default function App() {
             </TouchableOpacity>
           </View>
         </View>
-        
+
+        <View style={{columnGap: 10, marginTop: 50}}>
+          <View>
+            <Image style={styles.pdfImage} source={require('../assets/pdf.png')} />
+            <Text style={{color: "#fff", position: "absolute", marginLeft: 100, marginTop: -2,}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
+          </View>
+          <View>
+            <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
+              <Text>Download</Text>
+            </TouchableOpacity>
+          </View> 
+        </View>
+
+        <View style={{columnGap: 10, marginTop: 50}}>
+          <View>
+            <Image style={styles.pdfImage} source={require('../assets/pdf.png')} />
+            <Text style={{color: "#fff", position: "absolute", marginLeft: 100, marginTop: -2,}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
+          </View>
+          <View>
+            <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
+              <Text>Download</Text>
+            </TouchableOpacity>
+          </View> 
+        </View>
+        </View>
+
       </View>
     </LinearGradient>
   );
@@ -63,7 +89,7 @@ const styles = StyleSheet.create({
   video: {
     width: 400,
     height: 300,
-    marginTop: -400,
+    marginTop: -300,
     position: "fixed",
   },
 
