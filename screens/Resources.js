@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, Image, ScrollView, SafeAreaView } from 'react-native';
 import { Video, ResizeMode } from 'expo-av';
 import { LinearGradient } from 'expo-linear-gradient';
-import { FontAwesome } from '@expo/vector-icons';
+// import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function App() {
   const video = React.useRef(null);
@@ -16,7 +16,7 @@ export default function App() {
   return (
     <LinearGradient colors={['#02080e', '#1e1e1e', '#a59d9e']} style={styles.container}>
       <View>
-        <View style={{position: "fixed"}}>
+        <View style={{position: "fixed",}}>
           <Video
             ref={video}
             style={styles.video}
@@ -31,48 +31,50 @@ export default function App() {
         </View>
 
         <View style={styles.textContainer}>
-          <Text style={{ color: '#fff', fontSize: 19, marginTop: -30 }}>
+          <Text style={{ color: '#fff', fontSize: 19, marginTop: 80}}>
             {'Download Resources on \n BSc. Computer Science'}
           </Text>
         </View>
 
-            <View style={{marginTop: 80}}>
-        <View style={{columnGap: 10,}}>
-          <View>
-            <Image style={styles.pdfImage} source={require('../assets/pdf.png')} />
-            <Text style={{color: "#fff", position: "absolute", marginLeft: 100, marginTop: -2,}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
-          </View>
-          <View>
-            <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
-              <Text>Download</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
+          <SafeAreaView style={{marginTop: 35,}}>
+            <ScrollView style={styles.scrollView}>
+              <View style={{columnGap: 10, paddingTop: 30}}>
+                <View>
+                  <Image style={styles.pdfImage} source={require('../assets/pdf.png')} />
+                  <Text style={{color: "#fff", position: "absolute", marginLeft: 100, marginTop: -2,}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
+                </View>
+                <View>
+                  <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
+                    <Text>Download</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
 
-        <View style={{columnGap: 10, marginTop: 50}}>
-          <View>
-            <Image style={styles.pdfImage} source={require('../assets/pdf.png')} />
-            <Text style={{color: "#fff", position: "absolute", marginLeft: 100, marginTop: -2,}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
-          </View>
-          <View>
-            <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
-              <Text>Download</Text>
-            </TouchableOpacity>
-          </View> 
-        </View>
+              <View style={{columnGap: 10, marginTop: 50}}>
+                <View>
+                  <Image style={styles.pdfImage} source={require('../assets/pdf.png')} />
+                  <Text style={{color: "#fff", position: "absolute", marginLeft: 100, marginTop: -2,}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
+                </View>
+                <View>
+                  <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
+                    <Text>Download</Text>
+                  </TouchableOpacity>
+                </View> 
+              </View>
 
-        <View style={{columnGap: 10, marginTop: 50}}>
-          <View>
-            <Image style={styles.pdfImage} source={require('../assets/pdf.png')} />
-            <Text style={{color: "#fff", position: "absolute", marginLeft: 100, marginTop: -2,}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
-          </View>
-          <View>
-            <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
-              <Text>Download</Text>
-            </TouchableOpacity>
-          </View> 
-        </View>
-        </View>
+              <View style={{columnGap: 10, marginTop: 50, paddingBottom: 30}}>
+                <View>
+                  <Image style={styles.pdfImage} source={require('../assets/pdf.png')} />
+                  <Text style={{color: "#fff", position: "absolute", marginLeft: 100, marginTop: -2,}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
+                </View>
+                <View>
+                  <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
+                    <Text>Download</Text>
+                  </TouchableOpacity>
+                </View> 
+              </View>
+          </ScrollView>
+        </SafeAreaView>
 
       </View>
     </LinearGradient>
@@ -89,7 +91,7 @@ const styles = StyleSheet.create({
   video: {
     width: 400,
     height: 300,
-    marginTop: -300,
+    marginTop: -200,
     position: "fixed",
   },
 
