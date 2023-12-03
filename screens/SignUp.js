@@ -12,9 +12,68 @@ export default function SignUp() {
   const [name, onChangeName] = React.useState('');
   const [userId, onChangeId] = React.useState('');
   const [pin, onChangePin] = React.useState('');
+  const [errors, setErrors] = React.useState({});
+  const [college, setCollege] = React.useState('');
+  const [falculty, setFalculty] = React.useState('');
+  const [dept, setDept] = React.useState('');
+  const [level, setLevel] = React.useState('');
+ 
+
+  const validateForm = () => {
+    let errors = {};
+
+    if (!userId) {
+      errors.userId = 'ID is required';
+    } else if (userId.length !== 8) {
+      errors.userId = 'ID must be 8 characters';
+    } else if (!/^\d+$/.test(userId)) {
+      errors.userId = 'ID must contain only numbers';
+    }
+
+    if (!pin) {
+      errors.pin = 'PIN is required';
+  } else if (pin.length < 8) {
+      errors.pin = 'PIN must be at least 8 characters';
+  }
+
+  if (!name) {
+    errors.name = "Name is required";
+  }
+
+  if (!college){
+    errors.college = "input is required";
+  }
+
+  if (!falculty) {
+    errors.falculty = "select is required";
+  }
+
+  if (!dept) {
+    errors.dept = "select is required";
+  }
+
+  if (!level) {
+    errors.level = "select is required";
+  }
+
+
+  setErrors(errors);
+
+  return Object.keys(errors).length === 0;
+  }
 
   const handleSubmit = () => {
-     navigation.navigate('Login');
+    if (validateForm()) {
+      navigation.navigate('Login');
+      console.log('submitted', userId, pin);
+      onChangeId("");
+      onChangePin("");
+      setCollege("");
+      setDept("");
+      setFalculty("");
+      setLevel("");
+      setErrors({});
+  }
   }
 
   return (
@@ -31,6 +90,9 @@ export default function SignUp() {
             placeholderTextColor="#a09d9e"
           />
         </View>
+        {
+          errors.name ? <Text style={styles.errorText}>{errors.name}</Text> : null
+        }
 
         <View style={styles.inputView}>
           <TextInput 
@@ -42,6 +104,9 @@ export default function SignUp() {
             keyboardType="numeric"
           />
         </View>
+        {
+          errors.userId ? <Text style={styles.errorText}>{errors.userId}</Text> : null
+        }
 
         <View style={styles.inputView}>
           <TextInput 
@@ -53,9 +118,15 @@ export default function SignUp() {
             keyboardType="numeric"
           />
         </View>
+        {
+          errors.pin ? <Text style={styles.errorText}>{errors.pin}</Text> : null
+        }
+
         <View style={styles.pickerContainer}>
         <Picker
           selectedValue={selectedItem}
+          onChangeText={setCollege}
+          value={college}
           onValueChange={(itemValue) => setSelectedItem(itemValue)}
           style={styles.pickerInput}
         >
@@ -67,10 +138,15 @@ export default function SignUp() {
           <Picker.Item label="Hockey" value="hockey" />
         </Picker>
         </View>
+        {
+          errors.college ? <Text style={styles.errorText}>{errors.college}</Text> : null
+        }
 
         <View style={styles.pickerContainer}>
         <Picker
           selectedValue={selectedItem}
+          onChangeText={setFalculty}
+          value={falculty}
           onValueChange={(itemValue) => setSelectedItem(itemValue)}
           style={styles.pickerInput}
         >
@@ -82,10 +158,15 @@ export default function SignUp() {
           <Picker.Item label="Hockey" value="hockey" />
         </Picker>
         </View>
+        {
+          errors.falculty ? <Text style={styles.errorText}>{errors.falculty}</Text> : null
+        }
 
         <View style={styles.pickerContainer}>
         <Picker
           selectedValue={selectedItem}
+          onChangeText={setDept}
+          value={dept}
           onValueChange={(itemValue) => setSelectedItem(itemValue)}
           style={styles.pickerInput}
         >
@@ -96,10 +177,15 @@ export default function SignUp() {
           <Picker.Item label="400" value="L400" />
         </Picker>
         </View>
+        {
+          errors.dept ? <Text style={styles.errorText}>{errors.dept}</Text> : null
+        }
 
         <View style={styles.pickerContainer}>
         <Picker
           selectedValue={selectedItem}
+          onChangeText={setLevel}
+          value={level}
           onValueChange={(itemValue) => setSelectedItem(itemValue)}
           style={styles.pickerInput}
         >
@@ -110,7 +196,9 @@ export default function SignUp() {
           <Picker.Item label="400" value="L400" />
         </Picker>
         </View>
-        
+        {
+          errors.level ? <Text style={styles.errorText}>{errors.level}</Text> : null
+        }
         <TouchableOpacity onPress={handleSubmit} style={styles.loginBtn}>
           <Text style={{textAlign: "center", fontWeight: 'bold', fontSize: 18,}}>Submit</Text>
         </TouchableOpacity>
@@ -217,6 +305,12 @@ const styles = StyleSheet.create({
     marginLeft: 130,
     marginTop: 19,
     fontSize: 0,
+  },
+
+  errorText:{
+    color: "red",
+    marginBottom: 10,
+    textAlign: "center",
   },
 
 });
