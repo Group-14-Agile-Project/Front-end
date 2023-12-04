@@ -83,7 +83,7 @@ export default function Login() {
                     style={loginStyles.input2}
                     onChangeText={onChangeNumber}
                     value={pin}
-                    placeholder="Pin"
+                    placeholder="PIN"
                     placeholderTextColor="#a09d9e"
                     keyboardType="numeric"
                     />

@@ -97,7 +97,7 @@ export default function SignUp() {
             style={styles.input}
             onChangeText={onChangeName}
             value={name}
-            placeholder="Enter Name"
+            placeholder="Enter your Name"
             placeholderTextColor="#a09d9e"
           />
         </View>
