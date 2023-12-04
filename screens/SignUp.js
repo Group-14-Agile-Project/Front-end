@@ -142,9 +142,9 @@ export default function SignUp() {
           style={styles.pickerInput}
         >
           <Picker.Item label="Select your College" value="" />
-          <Picker.Item label="Football" value="football" />
-          <Picker.Item label="Baseball" value="baseball" />
-          <Picker.Item label="Hockey" value="hockey" />
+          <Picker.Item label="College of Distance Education" value="distance-education" />
+          <Picker.Item label="College of Education Studies" value="edu-studies" />
+          <Picker.Item label="College of Humanities and Legal Studies" value="legal-studies" />
           <Picker.Item label="Hockey" value="hockey" />
           <Picker.Item label="Hockey" value="hockey" />
         </Picker>
