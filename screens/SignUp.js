@@ -145,8 +145,8 @@ export default function SignUp() {
           <Picker.Item label="College of Distance Education" value="distance-education" />
           <Picker.Item label="College of Education Studies" value="edu-studies" />
           <Picker.Item label="College of Humanities and Legal Studies" value="legal-studies" />
-          <Picker.Item label="Hockey" value="hockey" />
-          <Picker.Item label="Hockey" value="hockey" />
+          <Picker.Item label="College of Agriculture and Natural Sciences" value="natural-sciences" />
+          <Picker.Item label="College of Graduate Studies" value="graduate-studies" />
         </Picker>
         </View>
         {
