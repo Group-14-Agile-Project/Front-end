@@ -162,9 +162,9 @@ export default function SignUp() {
           style={styles.pickerInput}
         >
           <Picker.Item label="Select your Falculty" value="" />
-          <Picker.Item label="Football" value="football" />
-          <Picker.Item label="Baseball" value="baseball" />
-          <Picker.Item label="Hockey" value="hockey" />
+          <Picker.Item label="Faculty of Social Sciences" value="social sciences" />
+          <Picker.Item label="Faculty of Law" value="law" />
+          <Picker.Item label="Faculty of Educational Foundations" value="edu foundation" />
           <Picker.Item label="Hockey" value="hockey" />
           <Picker.Item label="Hockey" value="hockey" />
         </Picker>
