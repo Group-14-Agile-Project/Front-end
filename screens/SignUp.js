@@ -182,10 +182,11 @@ export default function SignUp() {
           style={styles.pickerInput}
         >
           <Picker.Item label="Select your Department" value="" />
-          <Picker.Item label="100" value="L100" />
-          <Picker.Item label="200" value="L200" />
-          <Picker.Item label="300" value="L300" />
-          <Picker.Item label="400" value="L400" />
+          <Picker.Item label="Department of accounting" value="accounting" />
+          <Picker.Item label="Department of finance" value="finance" />
+          <Picker.Item label="Department of Human Resource Management" value="r-management" />
+          <Picker.Item label="Department of Management" value="management" />
+          <Picker.Item label="Department of Marketing and Supply Chain Management" value="chain-management" />
         </Picker>
         </View>
         {
