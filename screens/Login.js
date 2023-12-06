@@ -2,21 +2,30 @@ import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity, Alert } fro
 import React from 'react'
 import {LinearGradient} from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import Tabs from '../Components/Tabs';
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function Login() {
     const navigation = useNavigation();
     
     const [userId, onChangeId] = React.useState('');
-    const [pin, onChangeNumber] = React.useState('');
+    // const [pin, onChangeNumber] = React.useState('');
     const [errors, setErrors] = React.useState({});
+    const [userIdInfo, setUserId] = React.useState('')
+
+    const handleChange =(key, value)=>{
+      if(key === "userId"){
+        setUserId(value)
+      }
+    }
 
     const validateForm = () => {
         let errors = {};
 
         if (!userId) {
             errors.userId = 'ID is required';
-          } else if (userId.length !== 8) {
+          } else if (userId.length !== 3) {
             errors.userId = 'ID must be 8 characters';
           } else if (!/^\d+$/.test(userId)) {
             errors.userId = 'ID must contain only numbers';
@@ -24,7 +33,7 @@ export default function Login() {
 
         if (!pin) {
             errors.pin = 'PIN is required';
-        } else if (pin.length < 8) {
+        } else if (pin.length > 3 ) {
             errors.pin = 'PIN must be at least 8 characters';
         }
 
@@ -33,19 +42,18 @@ export default function Login() {
         return Object.keys(errors).length === 0;
     }
 
-    const handleSubmit = () => {
-        if (validateForm()) {
-            navigation.navigate('Resources');
-            console.log('submitted', userId, pin);
-            onChangeId("");
-            onChangeNumber("");
-            setErrors({});
-        }
+    const handleSubmit = async() => {
+        // if (validateForm()) {
+        // }
+        await AsyncStorage.setItem("user", userIdInfo)
+        // console.log('submitted', userId, pin);
+        onChangeId("");
+        // onChangeNumber("");
+        setErrors({});
     }
 
     const handleSignUp = () => {
       navigation.navigate('SignUp');
-
     }
 
   return (
@@ -67,8 +75,9 @@ export default function Login() {
                 <View style={loginStyles.inpContainer}>
                         <TextInput
                     style={loginStyles.input}
-                    onChangeText={onChangeId}
-                    value={userId}
+                    // onChangeText={onChangeId}
+                    onChangeText={(value)=>handleChange("userId", value)}
+                    // value={userId}
                     placeholder="Student ID"
                     placeholderTextColor="#a09d9e"
                     keyboardType="numeric"
@@ -81,8 +90,8 @@ export default function Login() {
                 <View style={loginStyles.inpContainer2}>
                         <TextInput
                     style={loginStyles.input2}
-                    onChangeText={onChangeNumber}
-                    value={pin}
+                    // onChangeText={onChangeNumber}
+                    // value={pin}
                     placeholder="PIN"
                     placeholderTextColor="#a09d9e"
                     keyboardType="numeric"
@@ -97,7 +106,7 @@ export default function Login() {
                 <Text style={{color: "white", textAlign: 'center'}}>Forgot password? <Text style={{color: "orange"}}>Reset</Text></Text>
             </TouchableOpacity>
 
-            <TouchableOpacity  onPress={handleSubmit} style={loginStyles.loginBtn}>
+            <TouchableOpacity onPress={handleSubmit}   style={loginStyles.loginBtn}>
                 <Text style={{textAlign: "center", fontWeight: 'bold',}}>Login</Text>
             </TouchableOpacity>
 

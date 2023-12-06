@@ -77,6 +77,10 @@ export default function SignUp() {
   }
   }
 
+  // const handleSignUp = () => {
+  //   navigation.navigate('SignUp')
+  // }
+
   return (
     <LinearGradient colors={['#02080e','#1e1e1e','#a59d9e']} style={styles.container}>
       <Image style={[styles.image, { opacity: 0.68 }]} source={require('../assets/study.jpg')} />

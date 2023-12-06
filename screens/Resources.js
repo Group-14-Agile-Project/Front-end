@@ -9,7 +9,7 @@ import Courses from '../screens/Courses';
 import Profile from '../screens/Profile';
 import Notification from '../screens/Notification';
 import SignUp from './SignUp';
-import { AntDesign, MaterialIcons, Feather, FontAwesome } from '@expo/vector-icons'; // Import icons as needed
+import Tabs from '../Components/Tabs';
 
 
 const Tab = createBottomTabNavigator();
@@ -27,7 +27,7 @@ export default function App() {
   return (
     <LinearGradient colors={['#02080e', '#1e1e1e', '#a59d9e']} style={styles.container}>
       <View>
-        <View style={{position: "fixed", }}>
+        <View style={{height: "50%"}}>
           <Video
             ref={video}
             style={styles.video}
@@ -42,7 +42,7 @@ export default function App() {
         </View>
 
         <View style={styles.textContainer}>
-          <Text style={{ color: '#fff', fontSize: 19, marginTop: 80}}>
+          <Text style={{ color: '#fff', fontSize: 19, marginTop: 490}}>
             {'Download Resources on \n BSc. Computer Science'}
           </Text>
         </View>
@@ -73,6 +73,95 @@ export default function App() {
                 </View> 
               </View>
 
+              <View style={{columnGap: 10, marginTop: 50, }}>
+                <View>
+                  <Image style={styles.pdfImage} source={require('../assets/pdf.png')} />
+                  <Text style={{color: "#fff", position: "absolute", marginLeft: 100, marginTop: -2,}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
+                </View>
+                <View>
+                  <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
+                    <Text>Download</Text>
+                  </TouchableOpacity>
+                </View> 
+              </View>
+              
+              <View style={{columnGap: 10, marginTop: 50}}>
+                <View>
+                  <Image style={styles.pdfImage} source={require('../assets/pdf.png')} />
+                  <Text style={{color: "#fff", position: "absolute", marginLeft: 100, marginTop: -2,}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
+                </View>
+                <View>
+                  <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
+                    <Text>Download</Text>
+                  </TouchableOpacity>
+                </View> 
+              </View>
+              <View style={{columnGap: 10, marginTop: 50,}}>
+                <View>
+                  <Image style={styles.pdfImage} source={require('../assets/pdf.png')} />
+                  <Text style={{color: "#fff", position: "absolute", marginLeft: 100, marginTop: -2,}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
+                </View>
+                <View>
+                  <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
+                    <Text>Download</Text>
+                  </TouchableOpacity>
+                </View> 
+              </View>
+              <View style={{columnGap: 10, marginTop: 50, paddingBottom: 30}}>
+                <View>
+                  <Image style={styles.pdfImage} source={require('../assets/pdf.png')} />
+                  <Text style={{color: "#fff", position: "absolute", marginLeft: 100, marginTop: -2,}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
+                </View>
+                <View>
+                  <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
+                    <Text>Download</Text>
+                  </TouchableOpacity>
+                </View> 
+              </View>
+              <View style={{columnGap: 10, marginTop: 50, paddingBottom: 30}}>
+                <View>
+                  <Image style={styles.pdfImage} source={require('../assets/pdf.png')} />
+                  <Text style={{color: "#fff", position: "absolute", marginLeft: 100, marginTop: -2,}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
+                </View>
+                <View>
+                  <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
+                    <Text>Download</Text>
+                  </TouchableOpacity>
+                </View> 
+              </View>
+              <View style={{columnGap: 10, marginTop: 50, paddingBottom: 30}}>
+                <View>
+                  <Image style={styles.pdfImage} source={require('../assets/pdf.png')} />
+                  <Text style={{color: "#fff", position: "absolute", marginLeft: 100, marginTop: -2,}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
+                </View>
+                <View>
+                  <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
+                    <Text>Download</Text>
+                  </TouchableOpacity>
+                </View> 
+              </View>
+              <View style={{columnGap: 10, marginTop: 50, paddingBottom: 30}}>
+                <View>
+                  <Image style={styles.pdfImage} source={require('../assets/pdf.png')} />
+                  <Text style={{color: "#fff", position: "absolute", marginLeft: 100, marginTop: -2,}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
+                </View>
+                <View>
+                  <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
+                    <Text>Download</Text>
+                  </TouchableOpacity>
+                </View> 
+              </View>
+              <View style={{columnGap: 10, marginTop: 50, paddingBottom: 30}}>
+                <View>
+                  <Image style={styles.pdfImage} source={require('../assets/pdf.png')} />
+                  <Text style={{color: "#fff", position: "absolute", marginLeft: 100, marginTop: -2,}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
+                </View>
+                <View>
+                  <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
+                    <Text>Download</Text>
+                  </TouchableOpacity>
+                </View> 
+              </View>
               <View style={{columnGap: 10, marginTop: 50, paddingBottom: 30}}>
                 <View>
                   <Image style={styles.pdfImage} source={require('../assets/pdf.png')} />
@@ -89,38 +178,8 @@ export default function App() {
 
       </View>
 
-      <View style={styles.tabContainer}>
-      <Tab.Navigator
-          screenOptions={({ route }) => ({
-            tabBarIcon: ({ focused, color, size }) => {
-              let iconName;
-
-              if (route.name === 'Home') {
-                iconName = focused ? 'home' : 'home'; // Change these to the actual icons you want to use
-                return <MaterialIcons name={iconName} size={40} color="#061337" />;
-              } else if (route.name === 'Courses') {
-                iconName = focused ? 'book' : 'library-books';
-                return <MaterialIcons name={iconName} size={size} color="#061337" />;
-              } else if (route.name === 'Notification') {
-                iconName = focused ? 'bell' : 'bell';
-                return <FontAwesome name={iconName} size={size} color="#061337" />;
-              } else if (route.name === 'Profile') {
-                iconName = focused ? 'user' : 'user';
-                return <AntDesign name={iconName} size={25} color="#061337" />;
-              }
-            },
-          })}
-          tabBarOptions={{
-            activeTintColor: 'red',
-            inactiveTintColor: 'gray',
-            style: { backgroundColor: 'black' },
-          }}
-        >
-            <Tab.Screen name='Home' component={Home} />
-            <Tab.Screen name='Courses' component={Courses}/>
-            <Tab.Screen name='Notification' component={Notification}/>
-            <Tab.Screen name='Profile' component={Profile}/>
-        </Tab.Navigator>
+        <View style={styles.tabContainer}>
+          {/* <Tabs /> */}
         </View>
     </LinearGradient>
   );
@@ -135,8 +194,8 @@ const styles = StyleSheet.create({
 
   video: {
     width: 400,
-    height: 300,
-    marginTop: -200,
+    height: "50%",
+    marginTop: 205,
     // position: "fixed",
   },
 
@@ -165,14 +224,5 @@ const styles = StyleSheet.create({
     marginLeft: 80,
   },
 
-  tabContainer: {
-    position: "absolute",
-    bottom: 25,
-    left: 20,
-    right: 20,
-    elevation: 0,
-    height: 90,
-    borderRadius: 50,
-
-  },
+ 
 });
