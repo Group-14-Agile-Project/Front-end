@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, Image, ScrollView, StatusBar } from 'react-nati
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { AntDesign, MaterialCommunityIcons, Entypo, FontAwesome, MaterialIcons  } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 export default function Notification() {
@@ -16,14 +17,16 @@ export default function Notification() {
         </View>
 
         <View>
-        <View style={styles.profileContainer}>
-        <Image style={styles.profileImage} source={require('../assets/mostFav.jpeg')} />
-      </View>
+          <View style={styles.profileContainer}>
+            <Image style={styles.profileImage} source={require('../assets/mostFav.jpeg')} />
+          </View>
         </View>
       </View>
 
+      
       <ScrollView style={styles.scrollView}>
-        <StatusBar barStyle="light-content" color="white" />
+      <LinearGradient colors={['#fff', '#fff',]}>
+        <StatusBar barStyle="light-content" color="white" backgroundColor="#1E1E1E"/>
         <View style={{backgroundColor: "", flexDirection: "row", marginTop: 40, marginLeft: 30,}}>
           <Text>Notifications</Text>
           <AntDesign style={{marginLeft: 230,}} name="close" size={24} color="black" /> 
@@ -70,6 +73,7 @@ export default function Notification() {
         <Text style={{marginLeft: 10, marginTop: 8,}}>{'HO1 \n Human resource Notification'}</Text>
         <MaterialIcons style={{marginLeft: 70, marginTop: 26}} name="keyboard-arrow-right" size={24} color="black" />
         </View>
+        </LinearGradient>
       </ScrollView>
     </SafeAreaView>
   )
@@ -84,7 +88,7 @@ const styles = StyleSheet.create({
 
 impose:{
   flexDirection: 'row',
-  marginTop: 20,
+  marginTop: 10,
   height: "20%",
   marginLeft: 20,
 },

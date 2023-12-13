@@ -12,7 +12,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export default function App() {
-  const [isloggedIn, setIsloggedIn] = useState()
+  const [isloggedIn, setIsloggedIn] = useState(false)
   useEffect(()=>{
     const getUserId = async()=>{
       const value = await AsyncStorage.getItem("user");
@@ -24,12 +24,13 @@ export default function App() {
   // console.log(isloggedIn)
   return (
     // <View >
-    <NavigationContainer style={styles.container} independent={true}>
+ <NavigationContainer style={styles.container} independent={true}>
   {isloggedIn ? (
-    <Stacks />
-  ) : (
     <Tabs />
+  ) : (
+    <Stacks />
   )}
+  {/* {isloggedIn && <Stacks/>} */}
 </NavigationContainer>
     // {/* </View> */}
    

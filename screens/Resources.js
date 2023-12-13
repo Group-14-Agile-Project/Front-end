@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, Image, ScrollView, SafeAreaView } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, Image, ScrollView, SafeAreaView, StatusBar } from 'react-native';
 import { Video, ResizeMode } from 'expo-av';
 import { LinearGradient } from 'expo-linear-gradient';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -26,8 +26,9 @@ export default function App() {
 
   return (
     <LinearGradient colors={['#02080e', '#1e1e1e', '#a59d9e']} style={styles.container}>
+      <StatusBar barStyle="light-content" color="white" />
       <View>
-        <View style={{height: "50%"}}>
+        <View style={{height: "50%", marginTop: -59,}}>
           <Video
             ref={video}
             style={styles.video}
@@ -42,7 +43,7 @@ export default function App() {
         </View>
 
         <View style={styles.textContainer}>
-          <Text style={{ color: '#fff', fontSize: 19, marginTop: 490}}>
+          <Text style={{ color: '#fff', fontSize: 19, marginTop: 430}}>
             {'Download Resources on \n BSc. Computer Science'}
           </Text>
         </View>

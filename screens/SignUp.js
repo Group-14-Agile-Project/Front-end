@@ -19,62 +19,62 @@ export default function SignUp() {
   const [level, setLevel] = React.useState('');
  
 
-  const validateForm = () => {
-    let errors = {};
+  // const validateForm = () => {
+  //   let errors = {};
 
-    if (!userId) {
-      errors.userId = 'ID is required';
-    } else if (userId.length !== 8) {
-      errors.userId = 'ID must be 8 characters';
-    } else if (!/^\d+$/.test(userId)) {
-      errors.userId = 'ID must contain only numbers';
-    }
+  //   if (!userId) {
+  //     errors.userId = 'ID is required';
+  //   } else if (userId.length !== 8) {
+  //     errors.userId = 'ID must be 8 characters';
+  //   } else if (!/^\d+$/.test(userId)) {
+  //     errors.userId = 'ID must contain only numbers';
+  //   }
 
-    if (!pin) {
-      errors.pin = 'PIN is required';
-  } else if (pin.length < 8) {
-      errors.pin = 'PIN must be at least 8 characters';
-  }
+  //   if (!pin) {
+  //     errors.pin = 'PIN is required';
+  // } else if (pin.length < 8) {
+  //     errors.pin = 'PIN must be at least 8 characters';
+  // }
 
-  if (!name) {
-    errors.name = "Name is required";
-  }
+  // if (!name) {
+  //   errors.name = "Name is required";
+  // }
 
-  if (!college){
-    errors.college = "input is required";
-  }
+  // if (!college){
+  //   errors.college = "input is required";
+  // }
 
-  if (!falculty) {
-    errors.falculty = "select is required";
-  }
+  // if (!falculty) {
+  //   errors.falculty = "select is required";
+  // }
 
-  if (!dept) {
-    errors.dept = "select is required";
-  }
+  // if (!dept) {
+  //   errors.dept = "select is required";
+  // }
 
-  if (!level) {
-    errors.level = "select is required";
-  }
+  // if (!level) {
+  //   errors.level = "select is required";
+  // }
 
 
-  setErrors(errors);
+  // setErrors(errors);
 
-  return Object.keys(errors).length === 0;
-  }
+  // return Object.keys(errors).length === 0;
+  // }
 
   const handleSubmit = () => {
-    if (validateForm()) {
+    // if (validateForm()) {
       navigation.navigate('Login');
       console.log('submitted', userId, pin);
-      onChangeId("");
-      onChangePin("");
-      setCollege("");
-      setDept("");
-      setFalculty("");
-      setLevel("");
-      onChangeName("");
-      setErrors({});
-  }
+  //     onChangeId("");
+  //     onChangePin("");
+  //     setCollege("");
+  //     setDept("");
+  //     setFalculty("");
+  //     setLevel("");
+  //     onChangeName("");
+  //     setErrors({});
+  // }
   }
 
   // const handleSignUp = () => {

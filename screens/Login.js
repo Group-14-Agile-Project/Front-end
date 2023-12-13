@@ -43,9 +43,10 @@ export default function Login() {
     }
 
     const handleSubmit = async() => {
+      navigation.navigate("Resources")
         // if (validateForm()) {
         // }
-        await AsyncStorage.setItem("user", userIdInfo)
+        // await AsyncStorage.setItem("user", userIdInfo)
         // console.log('submitted', userId, pin);
         onChangeId("");
         // onChangeNumber("");
