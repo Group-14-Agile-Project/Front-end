@@ -1,80 +1,77 @@
-import { View, Text, StatusBar, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native'
+import { View, Text, StatusBar, Image, StyleSheet, TouchableOpacity, ScrollView, TextInput } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import React from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import React from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Feather } from '@expo/vector-icons';
 
 export default function Home() {
   return (
     <LinearGradient colors={['#02080e', '#1e1e1e', '#a59d9e']} style={styles.container}>
-    <SafeAreaView >
-    <View style={styles.impose}>
-        <View style={{position:"absolute"}}> 
-            <Text style={{color: '#fff', fontSize: 18}}> Hello Manuel,</Text>
-            <Text style={{color: '#fff'}}>What do you want to learn today?</Text>
-        </View>
-        <View>
-          <View style={styles.profileContainer}>
-            <Image style={styles.profileImage} source={require('../assets/mostFav.jpeg')} />
+      <SafeAreaView>
+        <View style={styles.impose}>
+          <View style={{ position: "absolute" }}>
+            <Text style={{ color: '#fff', fontSize: 18 }}> Hello Manuel,</Text>
+            <Text style={{ color: '#fff' }}>What do you want to learn today?</Text>
+          </View>
+          <View>
+            <View style={styles.profileContainer}>
+              <Image style={styles.profileImage} source={require('../assets/mostFav.jpeg')} />
+            </View>
           </View>
         </View>
-      </View>
-       <View >
-      {/* Search Button */}
-      <TouchableOpacity style={styles.searchButton}>
-        {/* You can replace the text with a search icon */}
-        <Text style={{color: '#fff', fontSize: 17,}}> Search</Text>
-      </TouchableOpacity>
 
-      <View style={{flexDirection: 'row', columnGap: 100}}>
-        <Text style={{color: '#fff', fontSize: 24}}>My Courses</Text>
-        <Text style={{color: '#eee', fontSize: 20, fontWeight: 'normal' }}>Trending</Text>
-      </View>
-      
-      {/* Horizontal Scroll View */}
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.horizontalScrollView}>
-        {/* "Human Resource" Card */}
-        <View style={styles.courseContainer}>
-          <Text></Text>
-          <Image source={require('../assets/study.jpg')} style={styles.cardImage} />
-          <Text style={styles.cardText}>Human Resource</Text>
-          <Text style={{fontSize: 13, textAlign: 'center'}}>Human Resource 202</Text>
+        {/* Search Input */}
+        <View style={styles.searchInputContainer}>
+          <Feather name="search" size={24} color="#B7AEAE" style={styles.searchIcon} />
+          <TextInput style={styles.searchInput} placeholder="Search Courses" placeholderTextColor="#B7AEAE" />
         </View>
 
-        <View style={styles.courseContainer}>
-          <Text></Text>
-          <Image source={require('../assets/study.jpg')} style={styles.cardImage} />
-          <Text style={styles.cardText}>Human Resource</Text>
-          <Text style={{fontSize: 13, textAlign: 'center'}}>Human Resource 202</Text>
-        </View>
-      </ScrollView>
-
-      <View style={{flexDirection: 'row', columnGap: 100}}>
-        <Text style={{color: '#fff', fontSize: 20, marginTop: 18 }}>My Courses</Text>
-      </View>
-      
-      {/* Horizontal Scroll View */}
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.horizontalScrollView}>
-        {/* "Human Resource" Card */}
-        <View style={styles.courseContainer}>
-          <Text></Text>
-          <Image source={require('../assets/study.jpg')} style={styles.cardImage} />
-          <Text style={styles.cardText}>Human Resource</Text>
-          <Text style={{fontSize: 13, textAlign: 'center'}}>Human Resource 202</Text>
+        {/* Section Headers */}
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 7 }}>
+          <Text style={{ color: '#fff', fontSize: 24 }}>My Courses</Text>
+          {/* <Text style={{ color: '#eee', fontSize: 20, fontWeight: 'normal' }}>Trending</Text> */}
         </View>
 
-        <View style={styles.courseContainer}>
-          <Text></Text>
-          <Image source={require('../assets/study.jpg')} style={styles.cardImage} />
-          <Text style={styles.cardText}>Human Resource</Text>
-          <Text style={{fontSize: 13, textAlign: 'center'}}>Human Resource 202</Text>
+        {/* Horizontal Scroll View */}
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.horizontalScrollView}>
+          {/* "Human Resource" Card */}
+          <View style={styles.courseContainer}>
+            <Image source={require('../assets/study.jpg')} style={styles.cardImage} />
+            <Text style={styles.cardText}>Human Resource</Text>
+            <Text style={{ fontSize: 13, textAlign: 'center' }}>Human Resource 202</Text>
+          </View>
+
+          <View style={styles.courseContainer}>
+            <Image source={require('../assets/study.jpg')} style={styles.cardImage} />
+            <Text style={styles.cardText}>Human Resource</Text>
+            <Text style={{ fontSize: 13, textAlign: 'center' }}>Human Resource 202</Text>
+          </View>
+        </ScrollView>
+
+        {/* Section Header for My Courses */}
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 10 }}>
+          <Text style={{ color: '#fff', fontSize: 20, marginTop: 8 }}>Trending</Text>
         </View>
-      </ScrollView>
 
+        {/* Horizontal Scroll View for My Courses */}
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.horizontalScrollView}>
+          {/* "Human Resource" Card */}
+          <View style={styles.courseContainer}>
+            <Image source={require('../assets/study.jpg')} style={styles.cardImage} />
+            <Text style={styles.cardText}>Human Resource</Text>
+            <Text style={{ fontSize: 13, textAlign: 'center' }}>Human Resource 202</Text>
+          </View>
 
-    </View>
-    </SafeAreaView>
+          <View style={styles.courseContainer}>
+            <Image source={require('../assets/study.jpg')} style={styles.cardImage} />
+            <Text style={styles.cardText}>Human Resource</Text>
+            <Text style={{ fontSize: 13, textAlign: 'center' }}>Human Resource 202</Text>
+          </View>
+        </ScrollView>
+
+      </SafeAreaView>
     </LinearGradient>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -83,7 +80,7 @@ const styles = StyleSheet.create({
     padding: 16,
   },
 
-  impose:{
+  impose: {
     flexDirection: 'row',
     marginTop: 10,
     height: "20%",
@@ -92,68 +89,61 @@ const styles = StyleSheet.create({
   },
 
   profileContainer: {
-    // flexDirection: 'row',
     alignItems: 'center',
     marginLeft: 340,
   },
-  
+
   profileImage: {
     width: 50,
     height: 50,
     borderRadius: 50,
     marginLeft: -19,
   },
-  
-  searchButton: {
+
+  searchInputContainer: {
+    flexDirection: 'row',
     alignItems: 'center',
-    padding: 10,
-    borderColor: '#3498db',
-    backgroundColor: '#5A5151',
-    borderWidth: 2,
-    borderRadius: 10,
+    backgroundColor: '#333',
+    borderRadius: 25,
+    paddingHorizontal: 15,
     marginBottom: 10,
+  },
+
+  searchIcon: {
+    marginRight: 10,
+  },
+
+  searchInput: {
+    flex: 1,
+    height: 40,
     color: '#fff',
   },
 
   horizontalScrollView: {
     marginTop: 10,
   },
+
   courseContainer: {
     backgroundColor: '#B7AEAE',
-    // padding: 9,
     borderRadius: 15,
     marginRight: 15,
     width: 261,
-    // height: 200,
-  },
-
-  courseText: {
-    color: '#fff',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-
-  cardContainer: {
-    marginTop: 20,
-    borderRadius: 10,
-    width: 300,
-    overflow: 'hidden', // To apply border radius to Image
   },
 
   cardImage: {
     width: 240,
     height: 150,
     borderRadius: 30,
-    marginTop: -10,
+    marginTop: 10,
     marginLeft: 10,
   },
 
   cardText: {
-    padding: 10,
-    // backgroundColor: '#e74c3c',
+    padding: 5,
     color: 'black',
     fontWeight: 'bold',
     textAlign: 'center',
     fontSize: 16,
+    marginBottom: -5,
   },
 });
