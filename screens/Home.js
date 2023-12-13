@@ -22,7 +22,7 @@ export default function Home() {
       {/* Search Button */}
       <TouchableOpacity style={styles.searchButton}>
         {/* You can replace the text with a search icon */}
-        <Text> Search 🎗</Text>
+        <Text style={{color: '#fff', fontSize: 17,}}> Search</Text>
       </TouchableOpacity>
 
       <View style={{flexDirection: 'row', columnGap: 100}}>
@@ -108,11 +108,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 10,
     borderColor: '#3498db',
-    backgroundColor: '#fff',
+    backgroundColor: '#5A5151',
     borderWidth: 2,
     borderRadius: 10,
     marginBottom: 10,
+    color: '#fff',
   },
+
   horizontalScrollView: {
     marginTop: 10,
   },
