@@ -48,6 +48,7 @@ export default function Tabs() {
                 {/* <Tab.Screen name='Courses' component={Courses}/> */}
                 <Tab.Screen  options={{ headerShown: false }}  name='Notification' component={Notification}/>
                 <Tab.Screen  options={{ headerShown: false }}  name='Profile' component={Profile}/>
+                {/* <Tab.Screen name='Login' component={Login} options={{ headerShown: false, tabBarButton: () => null }}/> */}
             </Tab.Navigator>
     </NavigationContainer>
   

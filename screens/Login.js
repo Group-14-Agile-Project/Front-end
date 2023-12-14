@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity, Alert } from 'react-native'
+import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity, Alert, StatusBar } from 'react-native'
 import React from 'react'
 import {LinearGradient} from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
@@ -60,6 +60,7 @@ export default function Login() {
   return (
     <LinearGradient colors={['#02080e','#1e1e1e','#a59d9e']}
     style={{ flex: 1 }} >
+      {/* <StatusBar barStyle="light-content" color="white" /> */}
         <View style={{marginTop: 89}}>
             {/* Logo and the name  */}
             <View style={loginStyles.container}>
@@ -125,6 +126,7 @@ export default function Login() {
     </LinearGradient>
   )
 }
+
 
 const loginStyles = StyleSheet.create({
     mainContainer: {

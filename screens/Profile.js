@@ -5,15 +5,21 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign, MaterialCommunityIcons, Entypo, FontAwesome } from '@expo/vector-icons';
 
-export default function Profile({navigation}) {
 
+
+export default function Profile({}) {
+
+  const navigation = useNavigation()
   const handleLogout = () => {
+    
     // Remove the user from AsyncStorage
     // await AsyncStorage.removeItem('user');
-
+  
     // Navigate to the login screen
     navigation.navigate('Login');
+    
   };
+  
 
   return (
     <SafeAreaView style={styles.container}>

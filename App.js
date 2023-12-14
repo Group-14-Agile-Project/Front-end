@@ -8,6 +8,7 @@ import Tabs from './Components/Tabs';
 import Stacks from './Components/Stacks';
 import { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import IconTabs from './Components/IconTabs';
 
 
 
@@ -25,13 +26,9 @@ export default function App() {
   return (
     // <View >
  <NavigationContainer style={styles.container} independent={true}>
-  {isloggedIn ? (
-    <Tabs />
-  ) : (
     <Stacks />
-  )}
-  {/* {isloggedIn && <Stacks/>} */}
 </NavigationContainer>
+   
     // {/* </View> */}
    
   );
