@@ -6,6 +6,8 @@ import Resources from '../screens/Resources';
 import { createStackNavigator } from '@react-navigation/stack';
 import Tabs from './Tabs';
 import Profile from '../screens/Profile';
+import Home from '../screens/Home';
+import Notification from '../screens/Notification';
 
 const Stack = createStackNavigator();
 
@@ -13,10 +15,11 @@ export default function Stacks() {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName='Login'>
         <Stack.Screen name='Login' component={Login} options={{headerShown: false}}/>
-        <Stack.Screen name='Resources' component={Resources} />
-        <Stack.Screen name='Resource' component={Resources} />
-        <Stack.Screen name='SignUp' component={SignUp} />
-        <Stack.Screen name='Profile' component={Profile} />
+        <Stack.Screen name='Resources' component={Resources}  options={{headerShown: false}}/>
+        <Stack.Screen name='SignUp' component={SignUp} options={{headerShown: false}}/>
+        <Stack.Screen name='Profile' component={Profile} options={{headerShown: false}} />
+        <Stack.Screen name='Home' component={Home} options={{headerShown: false}}/>
+        <Stack.Screen name='Notification' component={Notification} options={{headerShown: false}}/>
     </Stack.Navigator>
   )
 }

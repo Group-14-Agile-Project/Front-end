@@ -24,12 +24,10 @@ export default function App() {
 
   // console.log(isloggedIn)
   return (
-    // <View >
+ 
  <NavigationContainer style={styles.container} independent={true}>
     <Stacks />
 </NavigationContainer>
-   
-    // {/* </View> */}
    
   );
 }

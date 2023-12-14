@@ -60,7 +60,7 @@ export default function Login() {
   return (
     <LinearGradient colors={['#02080e','#1e1e1e','#626363']}
     style={{ flex: 1 }} >
-      {/* <StatusBar barStyle="light-content" color="white" /> */}
+      <StatusBar barStyle="light-content" color="white" />
         <View style={{marginTop: 89}}>
             {/* Logo and the name  */}
             <View style={loginStyles.container}>

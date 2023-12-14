@@ -1,15 +1,17 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, Image, StyleSheet, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign, MaterialCommunityIcons, Entypo, FontAwesome } from '@expo/vector-icons';
+import IconTabs from '../Components/IconTabs';
 
 
 
 export default function Profile({}) {
 
   const navigation = useNavigation()
+
   const handleLogout = () => {
     
     // Remove the user from AsyncStorage
@@ -23,6 +25,7 @@ export default function Profile({}) {
 
   return (
     <SafeAreaView style={styles.container}>
+      {/* <StatusBar barStyle="light-content" color="white" /> */}
       <View style={styles.profileContainer}>
         <Image style={styles.profileImage} source={require('../assets/mostFav.jpeg')} />
         <Text>Emmanuel Ofori</Text>
@@ -57,6 +60,7 @@ export default function Profile({}) {
         <Text style={styles.logoutText}>Logout</Text>
       </TouchableOpacity>
     </SafeAreaView>
+    
   );
 }
 

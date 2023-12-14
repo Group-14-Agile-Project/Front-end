@@ -3,8 +3,10 @@ import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Feather } from '@expo/vector-icons';
+import IconTabs from '../Components/IconTabs';
 
 export default function Home() {
+
   return (
     <LinearGradient colors={['#02080e', '#1e1e1e', '#a59d9e']} style={styles.container}>
       <SafeAreaView>
@@ -49,7 +51,7 @@ export default function Home() {
         </ScrollView>
 
         {/* Section Header for My Courses */}
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 10 }}>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 2 }}>
           <Text style={{ color: '#fff', fontSize: 20, marginTop: 8 }}>Trending</Text>
         </View>
 
@@ -68,8 +70,8 @@ export default function Home() {
             <Text style={{ fontSize: 13, textAlign: 'center' }}>Human Resource 202</Text>
           </View>
         </ScrollView>
-
       </SafeAreaView>
+      <IconTabs />
     </LinearGradient>
   );
 }
@@ -77,7 +79,7 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
+    // padding: 16,
   },
 
   impose: {
@@ -105,8 +107,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#333',
     borderRadius: 25,
-    paddingHorizontal: 15,
+    paddingHorizontal: 10,
     marginBottom: 10,
+    width: 400,
+    marginLeft: 5,
   },
 
   searchIcon: {
@@ -117,6 +121,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 40,
     color: '#fff',
+    
   },
 
   horizontalScrollView: {
@@ -127,6 +132,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#B7AEAE',
     borderRadius: 15,
     marginRight: 15,
+    marginLeft: 10,
     width: 261,
   },
 

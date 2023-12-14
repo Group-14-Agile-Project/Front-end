@@ -1,8 +1,9 @@
 import { View, Text, StyleSheet, Image, ScrollView, StatusBar } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { AntDesign, MaterialCommunityIcons, Entypo, FontAwesome, MaterialIcons  } from '@expo/vector-icons';
+import { AntDesign, MaterialIcons  } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+import IconTabs from '../Components/IconTabs';
 
 
 export default function Notification() {
@@ -22,8 +23,6 @@ export default function Notification() {
           </View>
         </View>
       </View>
-
-      
       <ScrollView style={styles.scrollView}>
       <LinearGradient colors={['#fff', '#fff',]}>
         <StatusBar barStyle="light-content" color="white" backgroundColor="#1E1E1E"/>
@@ -75,6 +74,8 @@ export default function Notification() {
         </View>
         </LinearGradient>
       </ScrollView>
+
+      <IconTabs/>
     </SafeAreaView>
   )
 }
