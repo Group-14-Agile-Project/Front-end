@@ -14,13 +14,17 @@ export default function IconTabs() {
   }
   
   return (
-    <LinearGradient colors={['#121517', '#626363']} style={styles.iconContainer}>
-      <Pressable style={{ flexDirection: "row", columnGap: 25 }}>
-        <AntDesign name="home" size={50} color="#A09D9D" />
+    <LinearGradient colors={['#626363', '#121517']} style={styles.iconContainer}>
+      <View style={{ flexDirection: "row", columnGap: 35, }}> 
+        <View>
+        <AntDesign name="home" size={55} color="#A09D9D" /> 
+        <Text style>Home</Text>
+        </View>
+        
         <MaterialIcons name="library-books" size={60} color="#A09D9D" />
-        <AntDesign onPress={handleProfile} name="user" size={60} color="#A09D9D" />
-        <Ionicons name="notifications-outline" size={60} color="#A09D9D" />
-      </Pressable>
+        <AntDesign onPress={handleProfile} name="user" size={60} color="#eee" />
+        <Ionicons name="notifications-outline" size={60} color="#eee" />
+      </View>
     </LinearGradient>
   )
 }
@@ -32,12 +36,12 @@ const styles = StyleSheet.create({
 
   iconContainer: {
     position: "absolute",
-    top: 710,
-    paddingTop: -300,
+    bottom: 0,
     alignItems: "center",
-    justifyContent: "flex-end",
+    justifyContent: "center",
     height: "10%",
-    width: "90%",
-    marginLeft: 20,
+    width: "100%",
+    // paddingBottom: 20,
+    backgroundColor: 'transparent', // Make sure to set a transparent background
   },
-})
+});

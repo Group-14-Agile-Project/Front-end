@@ -26,7 +26,7 @@ export default function App() {
   };
 
   return (
-    <LinearGradient colors={['#02080e', '#1e1e1e', '#a59d9e']} style={styles.container}>
+    <LinearGradient colors={['#02080e', '#1e1e1e', '#626363']} style={styles.container}>
       <SafeAreaView style={{}}>
       <ScrollView style={styles.scrollView}>
         <StatusBar barStyle="light-content" color="white" />

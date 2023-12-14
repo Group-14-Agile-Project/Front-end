@@ -82,7 +82,7 @@ export default function SignUp() {
   // }
 
   return (
-    <LinearGradient colors={['#02080e','#1e1e1e','#a59d9e']} style={styles.container}>
+    <LinearGradient colors={['#02080e','#121517','#626363']} style={styles.container}>
       <Image style={[styles.image, { opacity: 0.68 }]} source={require('../assets/study.jpg')} />
 
       <View style={styles.impose}>
