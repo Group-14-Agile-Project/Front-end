@@ -18,12 +18,22 @@ export default function IconTabs() {
       <View style={{ flexDirection: "row", columnGap: 35, }}> 
         <View>
         <AntDesign name="home" size={55} color="#A09D9D" /> 
-        <Text style>Home</Text>
+        <Text style={{color: '#fff', textAlign: "center"}}>Home</Text>
+        </View>
+        <View>
+        <MaterialIcons name="library-books" size={50} color="#A09D9D" />
+        <Text style={{color: '#fff', textAlign: "center"}}>Courses</Text>
+        </View>
+
+        <View>
+        <Ionicons name="notifications-outline" size={50} color="#eee" />
+        <Text style={{color: '#fff', textAlign: "center"}}>Notification</Text>
         </View>
         
-        <MaterialIcons name="library-books" size={60} color="#A09D9D" />
-        <AntDesign onPress={handleProfile} name="user" size={60} color="#eee" />
-        <Ionicons name="notifications-outline" size={60} color="#eee" />
+        <View>
+        <AntDesign onPress={handleProfile} name="user" size={50} color="#eee" />
+        <Text style={{color: '#fff', textAlign: "center"}}>Profile</Text>
+        </View>
       </View>
     </LinearGradient>
   )
@@ -41,7 +51,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     height: "10%",
     width: "100%",
-    // paddingBottom: 20,
+    paddingBottom: 20,
+    paddingTop: 15,
     backgroundColor: 'transparent', // Make sure to set a transparent background
   },
 });
