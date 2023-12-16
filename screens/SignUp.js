@@ -3,79 +3,89 @@ import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity} from 'react
 import { LinearGradient } from 'expo-linear-gradient';
 import {Picker} from '@react-native-picker/picker';
 import { useNavigation } from '@react-navigation/native';
+import { BASE_API_URI } from '../utils/api';
+import axios from 'axios';
+
 
 
 export default function SignUp() {
   const navigation = useNavigation();
 
   
-  const [name, onChangeName] = React.useState('');
-  const [userId, onChangeId] = React.useState('');
-  const [pin, onChangePin] = React.useState('');
-  const [errors, setErrors] = React.useState({});
+  const [name, onChangeName] = useState('');
+  const [userId, onChangeId] = useState('');
+  const [pin, onChangePin] = useState('');
+  const [errors, setErrors] = useState({});
   const [college, setCollege] = useState('');
-  const [falculty, setFalculty] = React.useState('');
-  const [dept, setDept] = React.useState('');
-  const [level, setLevel] = React.useState('');
- 
-
-  // const validateForm = () => {
-  //   let errors = {};
-
-  //   if (!userId) {
-  //     errors.userId = 'ID is required';
-  //   } else if (userId.length !== 8) {
-  //     errors.userId = 'ID must be 8 characters';
-  //   } else if (!/^\d+$/.test(userId)) {
-  //     errors.userId = 'ID must contain only numbers';
-  //   }
-
-  //   if (!pin) {
-  //     errors.pin = 'PIN is required';
-  // } else if (pin.length < 8) {
-  //     errors.pin = 'PIN must be at least 8 characters';
-  // }
-
-  // if (!name) {
-  //   errors.name = "Name is required";
-  // }
-
-  // if (!college){
-  //   errors.college = "input is required";
-  // }
-
-  // if (!falculty) {
-  //   errors.falculty = "select is required";
-  // }
-
-  // if (!dept) {
-  //   errors.dept = "select is required";
-  // }
-
-  // if (!level) {
-  //   errors.level = "select is required";
-  // }
+  const [falculty, setFalculty] = useState('');
+  const [dept, setDept] = useState('');
+  const [level, setLevel] = useState('');
+  const [errorMessage, setErrorMessage] = useState(null);
 
 
-  // setErrors(errors);
+  const validateForm = () => {
+    let errors = {};
 
-  // return Object.keys(errors).length === 0;
-  // }
+    if (!userId) {
+      errors.userId = 'ID is required';
+    } else if (userId.length !== 8) {
+      errors.userId = 'ID must be 8 characters';
+    } else if (!/^\d+$/.test(userId)) {
+      errors.userId = 'ID must contain only numbers';
+    }
 
-  const handleSubmit = () => {
-    // if (validateForm()) {
-      navigation.navigate('Login');
-      console.log('submitted', userId, pin);
-  //     onChangeId("");
-  //     onChangePin("");
-  //     setCollege("");
-  //     setDept("");
-  //     setFalculty("");
-  //     setLevel("");
-  //     onChangeName("");
-  //     setErrors({});
-  // }
+    if (!pin) {
+      errors.pin = 'PIN is required';
+  } else if (pin.length < 8) {
+      errors.pin = 'PIN must be at least 8 characters';
   }
+
+  if (!name) {
+    errors.name = "Name is required";
+  }
+
+  if (!college){
+    errors.college = "input is required";
+  }
+
+  if (!falculty) {
+    errors.falculty = "select is required";
+  }
+
+  if (!dept) {
+    errors.dept = "select is required";
+  }
+
+  if (!level) {
+    errors.level = "select is required";
+  }
+
+
+  setErrors(errors);
+
+  return Object.keys(errors).length === 0;
+  }
+
+
+  const handleSubmit = async () => {
+    try {
+        const response = await axios.post(`${BASE_API_URI}/app/auth/sign_up/`, {
+            username: userId,
+            name: name,
+            college: college,
+            falculty: falculty,
+            department: dept,
+            level: level,
+            password: pin,
+        });
+
+        console.log(response.data);  // Log successful response
+    } catch (error) {
+        console.error('Axios Error:', error);
+        setErrorMessage(error.response?.data?.message?.username[0] || 'An error occurred.');
+        console.error('Axios Response Data:', error.response?.data);  // Log response data if available
+    }
+}
 
   // const handleSignUp = () => {
   //   navigation.navigate('SignUp')
@@ -95,7 +105,11 @@ export default function SignUp() {
       </View>
 
       <View style={styles.contentContainer}>
-        <Text style={styles.signUpText}>Create your account</Text>
+      {
+      errorMessage && <Text style={styles.errorText}>{errorMessage}</Text>
+      }
+
+        <Text style={styles.signUpText}> Create your account</Text>
         <View style={styles.inputView}>
           <TextInput 
             style={styles.input}
@@ -145,12 +159,12 @@ export default function SignUp() {
           onValueChange={(College) => setCollege(College)}
           style={styles.pickerInput}
         >
-          <Picker.Item label="Select your College" value="" />
-          <Picker.Item label="College of Distance Education" value="distance-education" />
-          <Picker.Item label="College of Education Studies" value="edu-studies" />
-          <Picker.Item label="College of Humanities and Legal Studies" value="legal-studies" />
-          <Picker.Item label="College of Agriculture and Natural Sciences" value="natural-sciences" />
-          <Picker.Item label="College of Graduate Studies" value="graduate-studies" />
+          <Picker.Item label="Select your College" />
+          <Picker.Item label="College of Distance Education" value="College of Distance Education" />
+          <Picker.Item label="College of Education Studies" value="College of Education Studies" />
+          <Picker.Item label="College of Humanities and Legal Studies" value="College of Humanities and Legal Studies" />
+          <Picker.Item label="College of Agriculture and Natural Sciences" value="College of Agriculture and Natural Sciences" />
+          <Picker.Item label="College of Graduate Studies" value="College of Graduate Studies" />
         </Picker>
         </View>
         {
@@ -165,12 +179,12 @@ export default function SignUp() {
           onValueChange={(Falculty) => setFalculty(Falculty)}
           style={styles.pickerInput}
         >
-          <Picker.Item label="Select your Falculty" value="" />
-          <Picker.Item label="Faculty of Social Sciences" value="social-sciences" />
-          <Picker.Item label="Faculty of Law" value="law" />
-          <Picker.Item label="Faculty of Educational Foundations" value="edu-foundation" />
-          <Picker.Item label="Faculty of Science and Technology Education" value="edu-tech" />
-          <Picker.Item label="Faculty of Art" value="art" />
+          <Picker.Item label="Select your Falculty" />
+          <Picker.Item label="Faculty of Social Sciences" value="Faculty of Social Sciences" />
+          <Picker.Item label="Faculty of Law" value="Faculty of Law" />
+          <Picker.Item label="Faculty of Educational Foundations" value="Faculty of Educational Foundations" />
+          <Picker.Item label="Faculty of Science and Technology Education" value="Faculty of Science and Technology Education" />
+          <Picker.Item label="Faculty of Art" value="Faculty of Art" />
         </Picker>
         </View>
         {
@@ -185,12 +199,12 @@ export default function SignUp() {
           onValueChange={(Department) => setDept(Department)}
           style={styles.pickerInput}
         >
-          <Picker.Item label="Select your Department" value="" />
-          <Picker.Item label="Department of accounting" value="accounting" />
-          <Picker.Item label="Department of finance" value="finance" />
-          <Picker.Item label="Department of Human Resource Management" value="r-management" />
-          <Picker.Item label="Department of Management" value="management" />
-          <Picker.Item label="Department of Marketing and Supply Chain Management" value="chain-management" />
+          <Picker.Item label="Select your Department"/>
+          <Picker.Item label="Department of accounting" value="Department of accounting" />
+          <Picker.Item label="Department of finance" value="Department of finance" />
+          <Picker.Item label="Department of Human Resource Management" value="Department of Human Resource Management" />
+          <Picker.Item label="Department of Management" value="Department of Management" />
+          <Picker.Item label="Department of Marketing and Supply Chain Management" value="Department of Marketing and Supply Chain Management" />
         </Picker>
         </View>
         {
@@ -205,7 +219,7 @@ export default function SignUp() {
           onValueChange={(Level) => setLevel(Level)}
           style={styles.pickerInput}
         >
-          <Picker.Item label="Select your Level" value="" />
+          <Picker.Item label="Select your Level" />
           <Picker.Item label="100" value="L100" />
           <Picker.Item label="200" value="L200" />
           <Picker.Item label="300" value="L300" />

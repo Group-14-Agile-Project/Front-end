@@ -4,6 +4,7 @@ import {LinearGradient} from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Tabs from '../Components/Tabs';
+import { BASE_API_URI } from '../utils/api';
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function Login() {
@@ -43,14 +44,12 @@ export default function Login() {
     }
 
     const handleSubmit = async() => {
-      navigation.navigate("Resources")
-        // if (validateForm()) {
-        // }
-        // await AsyncStorage.setItem("user", userIdInfo)
-        // console.log('submitted', userId, pin);
+      if (validateForm){
+        navigation.navigate("Resources")
         onChangeId("");
         // onChangeNumber("");
         setErrors({});
+      }
     }
 
     const handleSignUp = () => {

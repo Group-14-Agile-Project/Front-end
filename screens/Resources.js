@@ -107,6 +107,17 @@ export default function App() {
                 </TouchableOpacity>
               </View>
             </View>
+            <View style={{flexDirection: "row", columnGap: 90}}>
+              <View>
+                <Image style={styles.pdfImage} source={require('../assets/pdf.png')} /> 
+              </View>
+              <Text style={{color: "#ffffff", marginLeft: -97, padding: 25}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
+              <View>
+                <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
+                  <Text>Download</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
             
       </View> 
       </ScrollView> 

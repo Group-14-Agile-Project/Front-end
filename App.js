@@ -13,16 +13,7 @@ import IconTabs from './Components/IconTabs';
 
 
 export default function App() {
-  const [isloggedIn, setIsloggedIn] = useState(false)
-  useEffect(()=>{
-    const getUserId = async()=>{
-      const value = await AsyncStorage.getItem("user");
-      setIsloggedIn(value)
-    }
-    getUserId()
-  }, [])
 
-  // console.log(isloggedIn)
   return (
  
  <NavigationContainer style={styles.container} independent={true}>
