@@ -14,12 +14,12 @@ export default function Profile({}) {
 
   const handleLogout = () => {
     
-    // Remove the user from AsyncStorage
-    // await AsyncStorage.removeItem('user');
-  
-    // Navigate to the login screen
     navigation.navigate('Login');
     
+  };
+
+  const handleGoBack = () => {
+    navigation.goBack();
   };
 
   const handleAbout = () => {
@@ -30,10 +30,11 @@ export default function Profile({}) {
     navigation.navigate('SupportScreen')
   }
 
-  
-
   return (
     <SafeAreaView style={styles.container}>
+      <TouchableOpacity onPress={handleGoBack} style={styles.backButton}>
+        <AntDesign name="back" size={24} color="black" />
+      </TouchableOpacity>
       {/* <StatusBar barStyle="light-content" color="white" /> */}
       <View style={styles.profileContainer}>
         <Image style={styles.profileImage} source={require('../assets/mostFav.jpeg')} />
@@ -80,6 +81,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 100,
+  },
+
+  backButton: {
+    width: 70,
+    position: 'absolute',
+    top: -80,
+    left: 20,
+    zIndex: 1,
+    // backgroundColor: 'green',
+    borderRadius: 20,
+    borderWidth: 2,
+    borderColor: 'grey',
+    alignItems: 'center',
   },
 
   profileContainer: {

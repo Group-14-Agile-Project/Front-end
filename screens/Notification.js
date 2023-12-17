@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { AntDesign, MaterialIcons  } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import IconTabs from '../Components/IconTabs';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 export default function Notification({navigation}) {
@@ -12,11 +13,15 @@ export default function Notification({navigation}) {
     navigation.goBack();
   };
 
+  const handleImage = () => {
+    navigation.navigate('Profile')
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.impose}>
         <View style={{position:"absolute"}}>
-            <Image style={{width:43, height: 50,}} source={require('../assets/ucc.png')}/>
+          <Image  style={{width:43, height: 50,}} source={require('../assets/ucc.png')}/>
             <View style={{position: "absolute"}}>
             <Text style={{fontSize:12, marginLeft:45, color: "#fff", fontWeight: 500, width: 500 }}>{"University of \n Cape Coast"}</Text>
         </View>
@@ -24,7 +29,9 @@ export default function Notification({navigation}) {
 
         <View>
           <View style={styles.profileContainer}>
-            <Image style={styles.profileImage} source={require('../assets/mostFav.jpeg')} />
+          <TouchableOpacity onPress={handleImage}>
+              <Image style={styles.profileImage} source={require('../assets/mostFav.jpeg')} />
+          </TouchableOpacity>
           </View>
         </View>
       </View>
