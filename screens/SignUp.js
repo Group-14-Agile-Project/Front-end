@@ -108,7 +108,6 @@ export default function SignUp() {
       {
       errorMessage && <Text style={styles.errorText}>{errorMessage}</Text>
       }
-
         <Text style={styles.signUpText}> Create your account</Text>
         <View style={styles.inputView}>
           <TextInput 

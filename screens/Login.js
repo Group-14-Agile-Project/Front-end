@@ -2,10 +2,10 @@ import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity, Alert, Stat
 import React from 'react'
 import {LinearGradient} from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import Tabs from '../Components/Tabs';
-import { BASE_API_URI } from '../utils/api';
-// import { TouchableOpacity } from 'react-native-gesture-handler';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
+// import Tabs from '../Components/Tabs';
+// import { BASE_API_URI } from '../utils/api';
+// // import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function Login() {
     const navigation = useNavigation();
@@ -56,6 +56,10 @@ export default function Login() {
       navigation.navigate('SignUp');
     }
 
+    const handleResetPass = () => {
+      navigation.navigate('ResetPasswordScreen')
+    }
+
   return (
     <LinearGradient colors={['#02080e','#1e1e1e','#626363']}
     style={{ flex: 1 }} >
@@ -103,8 +107,8 @@ export default function Login() {
                 }
             </View>
             {/* End of ID and Pin Input View */}
-            <TouchableOpacity>
-                <Text style={{color: "white", textAlign: 'center'}}>Forgot password? <Text style={{color: "orange"}}>Reset</Text></Text>
+            <TouchableOpacity >
+                <Text style={{color: "white", textAlign: 'center'}}>Forgot password? <Text style={{color: "orange"}} onPress={handleResetPass}>Reset</Text></Text>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={handleSubmit}   style={loginStyles.loginBtn}>

@@ -21,6 +21,15 @@ export default function Profile({}) {
     navigation.navigate('Login');
     
   };
+
+  const handleAbout = () => {
+    navigation.navigate('AboutUs')
+  }
+
+  const handleSupport = () => {
+    navigation.navigate('SupportScreen')
+  }
+
   
 
   return (
@@ -35,17 +44,17 @@ export default function Profile({}) {
         </TouchableOpacity>
 
       <View style={{marginLeft: -140, marginTop: 30,}}>
-      <TouchableOpacity style={styles.option} onPress={() => {/* Handle support */}}>
+      <TouchableOpacity style={styles.option} onPress={handleSupport}>
         <AntDesign name="questioncircleo" size={24} color="black" />
         <Text style={styles.optionText}>Support</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.option} onPress={() => {/* Handle share */}}>
+      {/* <TouchableOpacity style={styles.option} onPress={}>
         <Entypo name="share" size={24} color="black" />
         <Text style={styles.optionText}>Share</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
-      <TouchableOpacity style={styles.option} onPress={() => {/* Handle about us */}}>
+      <TouchableOpacity style={styles.option} onPress={handleAbout}>
         <FontAwesome name="info-circle" size={24} color="black" />
         <Text style={styles.optionText}>About Us</Text>
       </TouchableOpacity>

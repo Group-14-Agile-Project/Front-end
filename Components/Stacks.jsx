@@ -8,6 +8,9 @@ import Tabs from './Tabs';
 import Profile from '../screens/Profile';
 import Home from '../screens/Home';
 import Notification from '../screens/Notification';
+import AboutUs from '../ProfileComponents/AboutUs';
+import SupportScreen from '../ProfileComponents/SupportScreen';
+import ResetPasswordScreen from '../ProfileComponents/ResetPasswordScreen';
 
 const Stack = createStackNavigator();
 
@@ -20,6 +23,9 @@ export default function Stacks() {
         <Stack.Screen name='Profile' component={Profile} options={{headerShown: false}} />
         <Stack.Screen name='Home' component={Home} options={{headerShown: false}}/>
         <Stack.Screen name='Notification' component={Notification} options={{headerShown: false}}/>
+        <Stack.Screen name='AboutUs' component={AboutUs} options={{headerShown: false}}/>
+        <Stack.Screen name='SupportScreen' component={SupportScreen} options={{headerShown: false}} />
+        <Stack.Screen name='ResetPasswordScreen' component={ResetPasswordScreen} options={{headerShown: false}} />
     </Stack.Navigator>
   )
 }

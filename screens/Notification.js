@@ -1,12 +1,17 @@
 import { View, Text, StyleSheet, Image, ScrollView, StatusBar } from 'react-native'
 import React from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { AntDesign, MaterialIcons  } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import IconTabs from '../Components/IconTabs';
 
 
-export default function Notification() {
+export default function Notification({navigation}) {
+
+  const handleGoBack = () => {
+    navigation.goBack();
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.impose}>
@@ -28,7 +33,7 @@ export default function Notification() {
         <StatusBar barStyle="light-content" color="white" backgroundColor="#1E1E1E"/>
         <View style={{backgroundColor: "", flexDirection: "row", marginTop: 40, marginLeft: 30,}}>
           <Text>Notifications</Text>
-          <AntDesign style={{marginLeft: 230,}} name="close" size={24} color="black" /> 
+          <AntDesign onPress={handleGoBack} style={{marginLeft: 230,}} name="close" size={24} color="black" /> 
         </View>
 
         <View style={{flexDirection: "row", marginTop: 30, margin: 20,}}>
