@@ -5,6 +5,7 @@ import {Picker} from '@react-native-picker/picker';
 import { useNavigation } from '@react-navigation/native';
 import { BASE_API_URI } from '../utils/api';
 import axios from 'axios';
+import { Alert } from 'react-native';
 
 
 
@@ -28,7 +29,7 @@ export default function SignUp() {
 
     if (!userId) {
       errors.userId = 'ID is required';
-    } else if (userId.length !== 8) {
+    } else if (userId.length !== 5) {
       errors.userId = 'ID must be 8 characters';
     } else if (!/^\d+$/.test(userId)) {
       errors.userId = 'ID must contain only numbers';
@@ -36,7 +37,7 @@ export default function SignUp() {
 
     if (!pin) {
       errors.pin = 'PIN is required';
-  } else if (pin.length < 8) {
+  } else if (pin.length < 3) {
       errors.pin = 'PIN must be at least 8 characters';
   }
 
@@ -68,7 +69,8 @@ export default function SignUp() {
 
 
   const handleSubmit = async () => {
-    try {
+    if(validateForm()){
+      try {
         const response = await axios.post(`${BASE_API_URI}/app/auth/sign_up/`, {
             username: userId,
             name: name,
@@ -85,6 +87,19 @@ export default function SignUp() {
         setErrorMessage(error.response?.data?.message?.username[0] || 'An error occurred.');
         console.error('Axios Response Data:', error.response?.data);  // Log response data if available
     }
+    setLevel('')
+    setCollege('')
+    setDept('')
+    setErrorMessage('')
+    setFalculty('')
+    setErrors('')
+    onChangeId('')
+    onChangeName('')
+    onChangePin('')
+    navigation.navigate('Login')
+
+    }
+    
 }
 
   // const handleSignUp = () => {
@@ -105,9 +120,9 @@ export default function SignUp() {
       </View>
 
       <View style={styles.contentContainer}>
-      {
-      errorMessage && <Text style={styles.errorText}>{errorMessage}</Text>
-      }
+        {
+    errorMessage && Alert.alert(`User ID ${userId} Already Exist`)
+  }
         <Text style={styles.signUpText}> Create your account</Text>
         <View style={styles.inputView}>
           <TextInput 
@@ -144,6 +159,7 @@ export default function SignUp() {
             placeholder="Enter a Pin"
             placeholderTextColor="#a09d9e"
             keyboardType="numeric"
+            secureTextEntry={true}
           />
         </View>
         {

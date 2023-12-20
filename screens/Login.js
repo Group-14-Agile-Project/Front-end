@@ -2,6 +2,8 @@ import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity, Alert, Stat
 import React from 'react'
 import {LinearGradient} from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
+import { BASE_API_URI } from '../utils/api';
+import axios from 'axios';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 // import Tabs from '../Components/Tabs';
 // import { BASE_API_URI } from '../utils/api';
@@ -11,30 +13,32 @@ export default function Login() {
     const navigation = useNavigation();
     
     const [userId, onChangeId] = React.useState('');
+    const [pin, onChangePin] = React.useState('');
+    // const [userId, onChangeId] = React.useState('');
     // const [pin, onChangeNumber] = React.useState('');
     const [errors, setErrors] = React.useState({});
-    const [userIdInfo, setUserId] = React.useState('')
+    // const [userIdInfo, setUserId] = React.useState('')
 
-    const handleChange =(key, value)=>{
-      if(key === "userId"){
-        setUserId(value)
-      }
-    }
+    // const handleChange =(key, value)=>{
+    //   if(key === "userId"){
+    //     setUserId(value)
+    //   }
+    // }
 
     const validateForm = () => {
         let errors = {};
 
         if (!userId) {
             errors.userId = 'ID is required';
-          } else if (userId.length !== 3) {
-            errors.userId = 'ID must be 8 characters';
+          } else if (userId.length !== 5) {
+            errors.userId = 'ID must be 5 characters';
           } else if (!/^\d+$/.test(userId)) {
             errors.userId = 'ID must contain only numbers';
           } 
 
         if (!pin) {
             errors.pin = 'PIN is required';
-        } else if (pin.length > 3 ) {
+        } else if (pin.length < 3 ) {
             errors.pin = 'PIN must be at least 8 characters';
         }
 
@@ -43,14 +47,34 @@ export default function Login() {
         return Object.keys(errors).length === 0;
     }
 
-    const handleSubmit = async() => {
-      if (validateForm){
-        navigation.navigate("Resources")
-        onChangeId("");
-        // onChangeNumber("");
-        setErrors({});
+    const handleLogin = async () => {
+      if (validateForm()) {
+        try {
+          const response = await axios.post(`${BASE_API_URI}/app/auth/login/`, {
+            username: userId,
+            password: pin,
+          });
+    
+          if (response.status === 200) {
+            Alert.alert('Success', 'You have successfully logged in.');
+            console.log(response.data);  // Log successful response
+            navigation.navigate("Resources");
+            onChangeId("");
+            setErrors({});
+          } else {
+            // Login failed, show an alert
+            Alert.alert('Login Failed', 'Invalid credentials. Please check your ID and PIN.');
+          }
+        } catch (error) {
+          console.error('Axios Error:', error);
+          console.error('Axios Response Data:', error.response?.data);
+          // Handle other errors if needed
+        }
+
+        onChangeId('')
+        onChangePin('')
       }
-    }
+    };
 
     const handleSignUp = () => {
       navigation.navigate('SignUp');
@@ -63,6 +87,7 @@ export default function Login() {
   return (
     <LinearGradient colors={['#02080e','#1e1e1e','#626363']}
     style={{ flex: 1 }} >
+      
       <StatusBar barStyle="light-content" color="white" />
         <View style={{marginTop: 89}}>
             {/* Logo and the name  */}
@@ -75,14 +100,17 @@ export default function Login() {
                 </View>
             </View>
 
+            
+            
+
             {/* Start of ID and Pin Input */}
             <View>
                 <View style={loginStyles.inpContainer}>
                         <TextInput
                     style={loginStyles.input}
                     // onChangeText={onChangeId}
-                    onChangeText={(value)=>handleChange("userId", value)}
-                    // value={userId}
+                    onChangeText={onChangeId}
+                    value={userId}
                     placeholder="Student ID"
                     placeholderTextColor="#a09d9e"
                     keyboardType="numeric"
@@ -95,11 +123,13 @@ export default function Login() {
                 <View style={loginStyles.inpContainer2}>
                         <TextInput
                     style={loginStyles.input2}
-                    // onChangeText={onChangeNumber}
-                    // value={pin}
+                    onChangeText={onChangePin}
+                    value={pin}
+                    type="password"
                     placeholder="PIN"
                     placeholderTextColor="#a09d9e"
                     keyboardType="numeric"
+                    secureTextEntry={true}
                     />
                 </View>
                 {
@@ -111,7 +141,7 @@ export default function Login() {
                 <Text style={{color: "white", textAlign: 'center'}}>Forgot password? <Text style={{color: "orange"}} onPress={handleResetPass}>Reset</Text></Text>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={handleSubmit}   style={loginStyles.loginBtn}>
+            <TouchableOpacity onPress={handleLogin}   style={loginStyles.loginBtn}>
                 <Text style={{textAlign: "center", fontWeight: 'bold',}}>Login</Text>
             </TouchableOpacity>
 
