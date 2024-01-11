@@ -13,10 +13,18 @@ class User(AbstractUser):
     department = models.CharField(max_length=255,blank=True,null=True)
     level = models.CharField(max_length=255,blank=True,null=True)
     # photo = models.ImageField(null=True, blank=True)
-    
-    
     def __str__(self):
         return self.username
+    
+class Resources(models.Model):
+    pdf = models.FileField(null=True, blank=True)
+    course_title = models.CharField(max_length=255, blank=True, null=True)
+    lecturer_name = models.CharField(max_length=255, blank=True)
+    level = models.CharField(max_length=255,blank=True)
+    department = models.CharField(max_length=255, blank=True)
+    
+    
+    
     
 #The profile model below is linked to the user model. The cascade function inherited,
 #help to delete the profile once the user model is deleted 

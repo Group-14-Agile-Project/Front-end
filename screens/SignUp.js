@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import {Picker} from '@react-native-picker/picker';
 import { useNavigation } from '@react-navigation/native';
 import { BASE_API_URI } from '../utils/api';
@@ -30,7 +31,7 @@ export default function SignUp() {
     if (!userId) {
       errors.userId = 'ID is required';
     } else if (userId.length !== 5) {
-      errors.userId = 'ID must be 8 characters';
+      errors.userId = 'ID must be 5 characters';
     } else if (!/^\d+$/.test(userId)) {
       errors.userId = 'ID must contain only numbers';
     }
@@ -108,6 +109,7 @@ export default function SignUp() {
 
   return (
     <LinearGradient colors={['#02080e','#121517','#626363']} style={styles.container}>
+      <SafeAreaView>
       <Image style={[styles.image, { opacity: 0.68 }]} source={require('../assets/study.jpg')} />
 
       <View style={styles.impose}>
@@ -186,6 +188,25 @@ export default function SignUp() {
           errors.college ? <Text style={styles.errorText}>{errors.college}</Text> : null
         }
 
+          <View style={styles.pickerContainer}>
+          <Picker
+            selectedValue={dept}
+            onChangeText={setDept}
+            value={dept}
+            onValueChange={(Department) => setDept(Department)}
+            style={styles.pickerInput}
+          >
+            <Picker.Item label="Select your Department"/>
+            <Picker.Item label="Department of accounting" value="Department of accounting" />
+            <Picker.Item label="Department of finance" value="Department of finance" />
+            <Picker.Item label="Department of Human Resource Management" value="Department of Human Resource Management" />
+            <Picker.Item label="Department of Management" value="Department of Management" />
+            <Picker.Item label="Department of Marketing and Supply Chain Management" value="Department of Marketing and Supply Chain Management" />
+          </Picker>
+          </View>
+          {
+            errors.dept ? <Text style={styles.errorText}>{errors.dept}</Text> : null
+          }
         <View style={styles.pickerContainer}>
         <Picker
           selectedValue={falculty}
@@ -194,9 +215,9 @@ export default function SignUp() {
           onValueChange={(Falculty) => setFalculty(Falculty)}
           style={styles.pickerInput}
         >
-          <Picker.Item label="Select your Falculty" />
-          <Picker.Item label="Faculty of Social Sciences" value="Faculty of Social Sciences" />
-          <Picker.Item label="Faculty of Law" value="Faculty of Law" />
+          <Picker.Item label="Select your Programme" />
+          <Picker.Item label="Computer Science" value="Computer Science" />
+          <Picker.Item label="Information Studies" value="Information Studies" />
           <Picker.Item label="Faculty of Educational Foundations" value="Faculty of Educational Foundations" />
           <Picker.Item label="Faculty of Science and Technology Education" value="Faculty of Science and Technology Education" />
           <Picker.Item label="Faculty of Art" value="Faculty of Art" />
@@ -206,25 +227,6 @@ export default function SignUp() {
           errors.falculty ? <Text style={styles.errorText}>{errors.falculty}</Text> : null
         }
 
-        <View style={styles.pickerContainer}>
-        <Picker
-          selectedValue={dept}
-          onChangeText={setDept}
-          value={dept}
-          onValueChange={(Department) => setDept(Department)}
-          style={styles.pickerInput}
-        >
-          <Picker.Item label="Select your Department"/>
-          <Picker.Item label="Department of accounting" value="Department of accounting" />
-          <Picker.Item label="Department of finance" value="Department of finance" />
-          <Picker.Item label="Department of Human Resource Management" value="Department of Human Resource Management" />
-          <Picker.Item label="Department of Management" value="Department of Management" />
-          <Picker.Item label="Department of Marketing and Supply Chain Management" value="Department of Marketing and Supply Chain Management" />
-        </Picker>
-        </View>
-        {
-          errors.dept ? <Text style={styles.errorText}>{errors.dept}</Text> : null
-        }
 
         <View style={styles.pickerContainer}>
         <Picker
@@ -248,6 +250,7 @@ export default function SignUp() {
           <Text style={{textAlign: "center", fontWeight: 'bold', fontSize: 18,}}>Submit</Text>
         </TouchableOpacity>
       </View>
+      </SafeAreaView>
     </LinearGradient>
   );
 }

@@ -1,14 +1,15 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image, StyleSheet, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
-import { AntDesign, MaterialCommunityIcons, Entypo, FontAwesome } from '@expo/vector-icons';
-import IconTabs from '../Components/IconTabs';
+import { AntDesign, FontAwesome } from '@expo/vector-icons';
+import { useSelector } from 'react-redux';
 
 
 
 export default function Profile({}) {
+  const user_login = useSelector(state => state.user_login)
+  const { error, loading, userInfo } = user_login
 
   const navigation = useNavigation()
 
@@ -29,49 +30,52 @@ export default function Profile({}) {
   const handleSupport = () => {
     navigation.navigate('SupportScreen')
   }
-
-  return (
-    <SafeAreaView style={styles.container}>
-      <TouchableOpacity onPress={handleGoBack} style={styles.backButton}>
-        <AntDesign name="back" size={24} color="black" />
-      </TouchableOpacity>
-      {/* <StatusBar barStyle="light-content" color="white" /> */}
-      <View style={styles.profileContainer}>
-        <Image style={styles.profileImage} source={require('../assets/mostFav.jpeg')} />
-        <Text>Emmanuel Ofori</Text>
-      </View>
-      <TouchableOpacity style={styles.editButton}>
-          <Text style={styles.editText}>Edit</Text>
+  if (userInfo){
+    const {username, name } = userInfo.user
+    return (
+      <SafeAreaView style={styles.container}>
+        <TouchableOpacity onPress={handleGoBack} style={styles.backButton}>
+          <AntDesign name="back" size={24} color="black" />
         </TouchableOpacity>
-
-      <View style={{marginLeft: -140, marginTop: 30,}}>
-      <TouchableOpacity style={styles.option} onPress={handleSupport}>
-        <AntDesign name="questioncircleo" size={24} color="black" />
-        <Text style={styles.optionText}>Support</Text>
-      </TouchableOpacity>
-
-      {/* <TouchableOpacity style={styles.option} onPress={}>
-        <Entypo name="share" size={24} color="black" />
-        <Text style={styles.optionText}>Share</Text>
-      </TouchableOpacity> */}
-
-      <TouchableOpacity style={styles.option} onPress={handleAbout}>
-        <FontAwesome name="info-circle" size={24} color="black" />
-        <Text style={styles.optionText}>About Us</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.option} onPress={() => {/* Handle settings */}}>
-        <AntDesign name="setting" size={24} color="black" />
-        <Text style={styles.optionText}>Settings</Text>
-      </TouchableOpacity>
-      </View>
-
-      <TouchableOpacity onPress={handleLogout} style={styles.logoutButton}>
-        <Text style={styles.logoutText}>Logout</Text>
-      </TouchableOpacity>
-    </SafeAreaView>
-    
-  );
+        {/* <StatusBar barStyle="light-content" color="white" /> */}
+        <View style={styles.profileContainer}>
+          <Image style={styles.profileImage} source={require('../assets/mostFav.jpeg')} />
+          <Text>{name}</Text>
+        </View>
+        <TouchableOpacity style={styles.editButton}>
+            <Text style={styles.editText}>Edit</Text>
+          </TouchableOpacity>
+  
+        <View style={{marginLeft: -140, marginTop: 30,}}>
+        <TouchableOpacity style={styles.option} onPress={handleSupport}>
+          <AntDesign name="questioncircleo" size={24} color="black" />
+          <Text style={styles.optionText}>Support</Text>
+        </TouchableOpacity>
+  
+        {/* <TouchableOpacity style={styles.option} onPress={}>
+          <Entypo name="share" size={24} color="black" />
+          <Text style={styles.optionText}>Share</Text>
+        </TouchableOpacity> */}
+  
+        <TouchableOpacity style={styles.option} onPress={handleAbout}>
+          <FontAwesome name="info-circle" size={24} color="black" />
+          <Text style={styles.optionText}>About Us</Text>
+        </TouchableOpacity>
+  
+        <TouchableOpacity style={styles.option} onPress={() => {/* Handle settings */}}>
+          <AntDesign name="setting" size={24} color="black" />
+          <Text style={styles.optionText}>Settings</Text>
+        </TouchableOpacity>
+        </View>
+  
+        <TouchableOpacity onPress={handleLogout} style={styles.logoutButton}>
+          <Text style={styles.logoutText}>Logout</Text>
+        </TouchableOpacity>
+      </SafeAreaView>
+      
+    );
+  }
+  
 }
 
 const styles = StyleSheet.create({

@@ -9,13 +9,14 @@ from rest_framework.permissions import AllowAny
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
 
+
 # Create your views here.
 
 
 def get_auth_for_user(user):
     refresh = RefreshToken.for_user(user)
     return {
-        'user':UserLoginSerializer(user).data,
+        'user':UserRegistrationSerializer(user).data,
         'refresh': str(refresh),
         'token': str(refresh.access_token) 
     }
@@ -23,12 +24,10 @@ def get_auth_for_user(user):
 
 class SignInView(APIView):
     permission_classes = [AllowAny]
-    
-
     def post(self, request):
         username = request.data.get('username')
         password = request.data.get('password')
-
+        print(username+password)
         user = authenticate(username=username, password=password)
 
         if not user:
@@ -56,3 +55,31 @@ class SignUpView(APIView):
                 "message": serializer.errors  
             }
            return Response(error_response, status=status.HTTP_400_BAD_REQUEST)
+       
+
+class ResourcesView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request):
+        # Assuming the user is authenticated, you can access the user's department and level
+        user = request.user
+        department = getattr(request.user, 'department', None)
+        level = getattr(request.user, 'level', None)
+        # department = user.department
+        # level = user.level
+
+        # Filter resources based on the user's department and level
+        resources_model_objects = Resources.objects.filter(department=department, level=level)
+
+        # Serialize the filtered resources
+        resources_serializer = ResourcesSerializer(resources_model_objects, many=True)
+
+        context = {
+            'resources_model_objects': resources_serializer.data,
+        }
+
+        return Response(context)
+    
+    
+
+    

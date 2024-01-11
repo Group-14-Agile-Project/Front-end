@@ -17,16 +17,7 @@ class UserLoginSerializer(serializers.Serializer):
             raise serializers.ValidationError({'username': ['Invalid credentials.']})
 
         return data
-        
-    # def create(self, validated_data):
-    #     # CLEAN ALL VALUES
-    #     username = validated_data['username'].lower()
-        
-    #     existing_user = User.objects.filter(username=username).first()
-    #     if not existing_user:
-    #         raise serializers.ValidationError({'username': ['The user doesnt exist.']})
-        
-        
+
 from rest_framework import serializers
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
@@ -70,3 +61,14 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         user.set_password(password)
         user.save()
         return user
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['username', 'name', 'college', 'faculty', 'department', 'level']
+        
+        
+class ResourcesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Resources
+        fields = ['text', ]  # Add all fields from your Resources model

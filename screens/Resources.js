@@ -4,6 +4,7 @@ import { Video, ResizeMode } from 'expo-av';
 import { LinearGradient } from 'expo-linear-gradient';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Home from '../screens/Home';
 import Courses from '../screens/Courses';
 import Profile from '../screens/Profile';
@@ -11,6 +12,8 @@ import Notification from '../screens/Notification';
 import SignUp from './SignUp';
 import Tabs from '../Components/Tabs';
 import IconTabs from '../Components/IconTabs';
+import { useState, useEffect } from 'react';
+import { BASE_API_URI } from '../utils/api';
 
 
 const Tab = createBottomTabNavigator();
@@ -18,12 +21,20 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   const video = React.useRef(null);
   const [status, setStatus] = React.useState({});
+  const [userData, setUserData] = React.useState(null);
+  const [level, setLevel] = React.useState(null);  // Add a state for 'level'
+  console.log(level)
+  const [resources, setResources] = useState([]);
+
   
+
 
   const handleDownload = () => {
     // Implement your download logic here
     alert('Download PDF');
   };
+
+  console.log(resources)
 
   return (
     <LinearGradient colors={['#02080e', '#1e1e1e', '#626363']} style={styles.container}>
@@ -61,119 +72,11 @@ export default function App() {
                 </TouchableOpacity>
               </View>
             </View>
-            <View style={{flexDirection: "row", columnGap: 80}}>
-              <View style={{marginLeft: 19,}}>
-                <Image style={styles.pdfImage} source={require('../assets/pdf.png')} /> 
-              </View>
-              <Text style={{color: "#ffffff", marginLeft: -90, padding: 25}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
-              <View>
-                <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
-                  <Text>Download</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-            <View style={{flexDirection: "row", columnGap: 80}}>
-              <View style={{marginLeft: 19,}}>
-                <Image style={styles.pdfImage} source={require('../assets/pdf.png')} /> 
-              </View>
-              <Text style={{color: "#ffffff", marginLeft: -90, padding: 25}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
-              <View>
-                <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
-                  <Text>Download</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-            <View style={{flexDirection: "row", columnGap: 80}}>
-              <View style={{marginLeft: 19,}}>
-                <Image style={styles.pdfImage} source={require('../assets/pdf.png')} /> 
-              </View>
-              <Text style={{color: "#ffffff", marginLeft: -90, padding: 25}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
-              <View>
-                <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
-                  <Text>Download</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-            <View style={{flexDirection: "row", columnGap: 80}}>
-              <View style={{marginLeft: 19,}}>
-                <Image style={styles.pdfImage} source={require('../assets/pdf.png')} /> 
-              </View>
-              <Text style={{color: "#ffffff", marginLeft: -90, padding: 25}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
-              <View>
-                <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
-                  <Text>Download</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-            <View style={{flexDirection: "row", columnGap: 80}}>
-              <View style={{marginLeft: 19,}}>
-                <Image style={styles.pdfImage} source={require('../assets/pdf.png')} /> 
-              </View>
-              <Text style={{color: "#ffffff", marginLeft: -90, padding: 25}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
-              <View>
-                <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
-                  <Text>Download</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-            <View style={{flexDirection: "row", columnGap: 80}}>
-              <View style={{marginLeft: 19,}}>
-                <Image style={styles.pdfImage} source={require('../assets/pdf.png')} /> 
-              </View>
-              <Text style={{color: "#ffffff", marginLeft: -90, padding: 25}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
-              <View>
-                <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
-                  <Text>Download</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-            <View style={{flexDirection: "row", columnGap: 80}}>
-              <View style={{marginLeft: 19,}}>
-                <Image style={styles.pdfImage} source={require('../assets/pdf.png')} /> 
-              </View>
-              <Text style={{color: "#ffffff", marginLeft: -90, padding: 25}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
-              <View>
-                <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
-                  <Text>Download</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-            <View style={{flexDirection: "row", columnGap: 80}}>
-              <View style={{marginLeft: 19,}}>
-                <Image style={styles.pdfImage} source={require('../assets/pdf.png')} /> 
-              </View>
-              <Text style={{color: "#ffffff", marginLeft: -90, padding: 25}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
-              <View>
-                <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
-                  <Text>Download</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-            <View style={{flexDirection: "row", columnGap: 80}}>
-              <View style={{marginLeft: 19,}}>
-                <Image style={styles.pdfImage} source={require('../assets/pdf.png')} /> 
-              </View>
-              <Text style={{color: "#ffffff", marginLeft: -90, padding: 25}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
-              <View>
-                <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
-                  <Text>Download</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-            <View style={{flexDirection: "row", columnGap: 80}}>
-              <View style={{marginLeft: 19,}}>
-                <Image style={styles.pdfImage} source={require('../assets/pdf.png')} /> 
-              </View>
-              <Text style={{color: "#ffffff", marginLeft: -90, padding: 25}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
-              <View>
-                <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
-                  <Text>Download</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
             
-          </ScrollView>
-      </View>
+            {/* </View> */}
+            
+          </ScrollView> 
+      </View> 
  
       <IconTabs />
       </SafeAreaView>   
