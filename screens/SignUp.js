@@ -21,7 +21,6 @@ export default function SignUp() {
   const [college, setCollege] = useState('');
   const [falculty, setFalculty] = useState('');
   const [dept, setDept] = useState('');
-  const [level, setLevel] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
 
 
@@ -58,9 +57,7 @@ export default function SignUp() {
     errors.dept = "select is required";
   }
 
-  if (!level) {
-    errors.level = "select is required";
-  }
+  
 
 
   setErrors(errors);
@@ -78,7 +75,6 @@ export default function SignUp() {
             college: college,
             falculty: falculty,
             department: dept,
-            level: level,
             password: pin,
         });
 
@@ -88,7 +84,6 @@ export default function SignUp() {
         setErrorMessage(error.response?.data?.message?.username[0] || 'An error occurred.');
         console.error('Axios Response Data:', error.response?.data);  // Log response data if available
     }
-    setLevel('')
     setCollege('')
     setDept('')
     setErrorMessage('')
@@ -228,24 +223,6 @@ export default function SignUp() {
         }
 
 
-        <View style={styles.pickerContainer}>
-        <Picker
-          selectedValue={level}
-          onChangeText={setLevel}
-          value={level}
-          onValueChange={(Level) => setLevel(Level)}
-          style={styles.pickerInput}
-        >
-          <Picker.Item label="Select your Level" />
-          <Picker.Item label="100" value="L100" />
-          <Picker.Item label="200" value="L200" />
-          <Picker.Item label="300" value="L300" />
-          <Picker.Item label="400" value="L400" />
-        </Picker>
-        </View>
-        {
-          errors.level ? <Text style={styles.errorText}>{errors.level}</Text> : null
-        }
         <TouchableOpacity onPress={handleSubmit} style={styles.loginBtn}>
           <Text style={{textAlign: "center", fontWeight: 'bold', fontSize: 18,}}>Submit</Text>
         </TouchableOpacity>

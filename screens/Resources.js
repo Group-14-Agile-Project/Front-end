@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, Image, ScrollView, SafeAreaView, StatusBar } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, Image, ScrollView, SafeAreaView, StatusBar,Linking } from 'react-native';
 import { Video, ResizeMode } from 'expo-av';
 import { LinearGradient } from 'expo-linear-gradient';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -23,17 +23,32 @@ export default function App() {
   const [status, setStatus] = React.useState({});
   const [userData, setUserData] = React.useState(null);
   const [level, setLevel] = React.useState(null);  // Add a state for 'level'
-  console.log(level)
   const [resources, setResources] = useState([]);
 
-  
+  useEffect(() => {
+    // Define an async function to fetch data from AsyncStorage
+    const fetchResources = async () => {
+      try {
+        const storedResources = await AsyncStorage.getItem('resources');
+        if (storedResources) {
+          // If there are stored resources, parse and set them to the state
+          setResources(JSON.parse(storedResources));
+        }
+      } catch (error) {
+        console.error('Error retrieving resources from AsyncStorage:', error);
+      }
+    };
 
+    // Call the fetchResources function when the component mounts
+    fetchResources();
+  }, []); // Empty dependency array ensures the effect runs only once on mount
 
-  const handleDownload = () => {
-    // Implement your download logic here
-    alert('Download PDF');
+  // ... (remaining component code)
+
+  const handleDownload = (pdfUrl) => {
+    // Use Linking API to open the PDF file in the default viewer
+    Linking.openURL(pdfUrl);
   };
-
   console.log(resources)
 
   return (
@@ -60,22 +75,28 @@ export default function App() {
                 {'Download Resources on \n BSc. Computer Science'}
               </Text>
             
-          <ScrollView style={{marginBottom: 40, marginTop: 16,}}>
-            <View style={{flexDirection: "row", columnGap: 80}}>
-              <View style={{marginLeft: 19,}}>
-                <Image style={styles.pdfImage} source={require('../assets/pdf.png')} /> 
-              </View>
-              <Text style={{color: "#ffffff", marginLeft: -90, padding: 25}}>{'HR 101 \n Dr. Emmanuel Ani'}</Text>
-              <View>
-                <TouchableOpacity style={styles.downloadBtn} onPress={handleDownload}>
-                  <Text>Download</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-            
-            {/* </View> */}
-            
-          </ScrollView> 
+              <ScrollView style={{ marginBottom: 40, marginTop: 16 }}>
+                {resources.map((resource, index) => (
+                  <View key={index} style={{ flexDirection: "row", columnGap: 80 }}>
+                    <View style={{ marginLeft: 19 }}>
+                      <Image style={styles.pdfImage} source={require('../assets/pdf.png')} />
+                    </View>
+                    <Text style={{ color: "#ffffff", marginLeft: -90, padding: 25 }}>
+                      {`${resource.course_title} \n ${resource.lecturer_name}`}
+                    </Text>
+                    <View>
+                      <TouchableOpacity
+                        style={styles.downloadBtn}
+                        onPress={() => handleDownload(resource.pdf.url)}
+
+                      >
+                        <Text>Download</Text>
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                ))}
+              </ScrollView>
+ 
       </View> 
  
       <IconTabs />

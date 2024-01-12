@@ -28,7 +28,6 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
             'name',
             'college',
             'falculty',
-            'level',
             'department',
             'password'
         ]
@@ -41,7 +40,6 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         college = validated_data['college'].lower()
         falculty = validated_data['falculty'].lower()
         department = validated_data['department'].lower()
-        level = validated_data['level'].lower()
         password = validated_data['password']
         
         # Check if a user with the same username already exists
@@ -56,7 +54,6 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
             college=college,
             falculty=falculty,
             department=department,
-            level=level,  
         )
         user.set_password(password)
         user.save()
@@ -65,10 +62,10 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['username', 'name', 'college', 'faculty', 'department', 'level']
+        fields = ['username', 'name', 'college', 'faculty', 'department']
         
         
 class ResourcesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Resources
-        fields = ['text', ]  # Add all fields from your Resources model
+        fields = '__all__'  # Add all fields from your Resources model

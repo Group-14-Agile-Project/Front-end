@@ -9,17 +9,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 // import Tabs from '../Components/Tabs';
 // import { BASE_API_URI } from '../utils/api';
 // // import { TouchableOpacity } from 'react-native-gesture-handler';
-import { login } from '../actions/AuthAction';
-import { useDispatch ,useSelector} from 'react-redux';
+
 export default function Login() {
     const navigation = useNavigation();
-    const dispatch = useDispatch()
-
-
-    const user_login = useSelector(state => state.user_login)
-    const { error, loading, userInfo } = user_login
-    console.log(userInfo)
-
+    
     const [userId, onChangeId] = React.useState('');
     const [pin, onChangePin] = React.useState('');
     // const [userId, onChangeId] = React.useState('');
@@ -58,11 +51,16 @@ export default function Login() {
     const handleLogin = async () => {
       if (validateForm()) {
         try {
-          dispatch(login(userId,pin))
-          if (userInfo) {
+          const response = await axios.post(`${BASE_API_URI}/app/auth/login/`, {
+            username: userId,
+            password: pin,
+          });
+    
+          if (response.status === 200) {
             Alert.alert('Success', 'You have successfully logged in.');
+            await AsyncStorage.setItem('user', JSON.stringify(response.data.user))
             
-            navigation.navigate("Resources");
+            navigation.navigate("Search");
             onChangeId("");
             setErrors({});
           } else {
