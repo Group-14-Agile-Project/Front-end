@@ -75,11 +75,10 @@ class UserProfileView(RetrieveUpdateAPIView):
 
 
     def update(self, request, *args, **kwargs):
-        partial = kwargs.pop('partial', False)
         # get_user_from_jwttoken(request)
         instance = get_user_from_jwttoken(request)
         print(instance)
-        serializer = UserSerializer(instance, data=request.data, partial=partial)
+        serializer = UserSerializer(instance, data=request.data, partial=True)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
         return Response(serializer.data, status=status.HTTP_200_OK)

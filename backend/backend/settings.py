@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import dj_database_url
 from pathlib import Path
 import os
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -95,7 +96,7 @@ DATABASES = {
     }
 }
 
-DATABASES['default'] = dj_database_url.parse("postgres://virtual_university_render_user:lveDul5qOOQVDUJoNU4mcLX4hSNa2zez@dpg-cmikesocmk4c739lh8mg-a.oregon-postgres.render.com/virtual_university_render")
+# DATABASES['default'] = dj_database_url.parse("postgres://virtual_university_render_user:lveDul5qOOQVDUJoNU4mcLX4hSNa2zez@dpg-cmikesocmk4c739lh8mg-a.oregon-postgres.render.com/virtual_university_render")
 
 
 
@@ -120,6 +121,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(hours=3),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=5),
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
