@@ -50,7 +50,7 @@ class SignUpView(APIView):
        except:
            pass
        if user:
-           return Response("User already exists", status=status.HTTP_208_ALREADY_REPORTED)
+           return Response({"detail": "User already exists"}, status=status.HTTP_406_NOT_ACCEPTABLE)
        user = User.objects.create_user(username=username, password=password)
        serializer = UserRegistrationSerializer(user)
        if not username or not password:
