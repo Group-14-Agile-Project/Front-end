@@ -96,7 +96,7 @@ DATABASES = {
     }
 }
 
-# DATABASES['default'] = dj_database_url.parse("postgres://virtual_university_render_user:lveDul5qOOQVDUJoNU4mcLX4hSNa2zez@dpg-cmikesocmk4c739lh8mg-a.oregon-postgres.render.com/virtual_university_render")
+DATABASES['default'] = dj_database_url.parse("postgres://virtual_university_render_user:lveDul5qOOQVDUJoNU4mcLX4hSNa2zez@dpg-cmikesocmk4c739lh8mg-a.oregon-postgres.render.com/virtual_university_render")
 
 
 
