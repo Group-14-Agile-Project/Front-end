@@ -8,6 +8,8 @@ from rest_framework.permissions import AllowAny
 #from rest_framework.authtoken.models import Token
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.generics import RetrieveUpdateAPIView
+
 
 
 # Create your views here.
@@ -63,5 +65,19 @@ class ResourcesView(APIView):
         serializer = ResourcesSerializer(resourses,many=True)
         print(serializer.data)
         return Response(serializer.data, status=200)
-
     
+class UserProfileView(RetrieveUpdateAPIView):
+    serializer_class = UserRegistrationSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_object(self):
+        return self.request.user
+
+    def update(self, request, *args, **kwargs):
+        partial = kwargs.pop('partial', False)
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=partial)
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer)
+        return Response(serializer.data)
+
