@@ -8,7 +8,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export default function Profile({}) {
-
+  // const [user, setUser] = useState(null);
   const navigation = useNavigation()
 
   const handleLogout = () => {
@@ -16,6 +16,11 @@ export default function Profile({}) {
     navigation.navigate('Login');
     
   };
+
+  const handleEdit = async() => {
+    
+    navigation.navigate('EditProfileScreen', { initialName: user.name })
+  }
 
   const handleGoBack = () => {
     navigation.goBack();
@@ -55,11 +60,18 @@ export default function Profile({}) {
         <AntDesign name="back" size={24} color="black" />
       </TouchableOpacity>
       {/* <StatusBar barStyle="light-content" color="white" /> */}
+      
       <View style={styles.profileContainer}>
-        <Image style={styles.profileImage} source={require('../assets/mostFav.jpeg')} />
+        <Image 
+        style={styles.profileImage} 
+        source={user?.photo
+          ? { uri: `http://10.0.2.2:8000${user.photo}` }
+          : require('../assets/mostFav.jpeg')
+        }
+        />
         <Text>{user?.name}</Text>
       </View>
-      <TouchableOpacity style={styles.editButton}>
+      <TouchableOpacity style={styles.editButton} onPress={handleEdit}>
           <Text style={styles.editText}>Edit</Text>
         </TouchableOpacity>
 
@@ -68,11 +80,6 @@ export default function Profile({}) {
         <AntDesign name="questioncircleo" size={24} color="black" />
         <Text style={styles.optionText}>Support</Text>
       </TouchableOpacity>
-
-      {/* <TouchableOpacity style={styles.option} onPress={}>
-        <Entypo name="share" size={24} color="black" />
-        <Text style={styles.optionText}>Share</Text>
-      </TouchableOpacity> */}
 
       <TouchableOpacity style={styles.option} onPress={handleAbout}>
         <FontAwesome name="info-circle" size={24} color="black" />
@@ -83,7 +90,9 @@ export default function Profile({}) {
         <AntDesign name="setting" size={24} color="black" />
         <Text style={styles.optionText}>Settings</Text>
       </TouchableOpacity>
+
       </View>
+      
 
       <TouchableOpacity onPress={handleLogout} style={styles.logoutButton}>
         <Text style={styles.logoutText}>Logout</Text>

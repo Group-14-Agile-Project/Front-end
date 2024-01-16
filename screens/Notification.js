@@ -13,6 +13,10 @@ export default function Notification({navigation}) {
     navigation.goBack();
   };
 
+  const handleNotification = () => {
+    navigation.navigate('MainNotificationScreen')
+  }
+
   const handleImage = () => {
     navigation.navigate('Profile')
   }
@@ -45,25 +49,25 @@ export default function Notification({navigation}) {
 
         <View style={{flexDirection: "row", marginTop: 30, margin: 20,}}>
         <Image style={styles.profileImage} source={require('../assets/mostFav.jpeg')} />
-        <Text style={{marginLeft: 10, marginTop: 8,}}>{'HO1 \n Human resource Notification'}</Text>
+        <Text style={{marginLeft: 10, marginTop: 8,}}>{'DCIT 101 \n Intro. to Computing'}</Text>
+        <MaterialIcons onPress={handleNotification} style={{marginLeft: 70, marginTop: 26}} name="keyboard-arrow-right" size={24} color="black" />
+        </View>
+
+        <View style={{flexDirection: "row", marginTop: 30, margin: 20,}}>
+        <Image style={styles.profileImage} source={require('../assets/mostFav.jpeg')} />
+        <Text style={{marginLeft: 10, marginTop: 8,}}>{'DCIT 102 \n Computer Systems'}</Text>
         <MaterialIcons style={{marginLeft: 70, marginTop: 26}} name="keyboard-arrow-right" size={24} color="black" />
         </View>
 
         <View style={{flexDirection: "row", marginTop: 30, margin: 20,}}>
         <Image style={styles.profileImage} source={require('../assets/mostFav.jpeg')} />
-        <Text style={{marginLeft: 10, marginTop: 8,}}>{'HO1 \n Human resource Notification'}</Text>
+        <Text style={{marginLeft: 10, marginTop: 8,}}>{'HR 202 \n Human resources '}</Text>
         <MaterialIcons style={{marginLeft: 70, marginTop: 26}} name="keyboard-arrow-right" size={24} color="black" />
         </View>
 
         <View style={{flexDirection: "row", marginTop: 30, margin: 20,}}>
         <Image style={styles.profileImage} source={require('../assets/mostFav.jpeg')} />
-        <Text style={{marginLeft: 10, marginTop: 8,}}>{'HO1 \n Human resource Notification'}</Text>
-        <MaterialIcons style={{marginLeft: 70, marginTop: 26}} name="keyboard-arrow-right" size={24} color="black" />
-        </View>
-
-        <View style={{flexDirection: "row", marginTop: 30, margin: 20,}}>
-        <Image style={styles.profileImage} source={require('../assets/mostFav.jpeg')} />
-        <Text style={{marginLeft: 10, marginTop: 8,}}>{'HO1 \n Human resource Notification'}</Text>
+        <Text style={{marginLeft: 10, marginTop: 8,}}>{'HR 101 \n Human resource Notification'}</Text>
         <MaterialIcons style={{marginLeft: 70, marginTop: 26}} name="keyboard-arrow-right" size={24} color="black" />
         </View>
 

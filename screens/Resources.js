@@ -3,14 +3,7 @@ import { View, StyleSheet, Text, TouchableOpacity, Image, ScrollView, SafeAreaVi
 import { Video, ResizeMode } from 'expo-av';
 import { LinearGradient } from 'expo-linear-gradient';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Home from '../screens/Home';
-import Courses from '../screens/Courses';
-import Profile from '../screens/Profile';
-import Notification from '../screens/Notification';
-import SignUp from './SignUp';
-import Tabs from '../Components/Tabs';
 import IconTabs from '../Components/IconTabs';
 import { useState, useEffect } from 'react';
 import { BASE_API_URI } from '../utils/api';
@@ -38,12 +31,10 @@ export default function App() {
         console.error('Error retrieving resources from AsyncStorage:', error);
       }
     };
-
-    // Call the fetchResources function when the component mounts
     fetchResources();
-  }, []); // Empty dependency array ensures the effect runs only once on mount
+  }, []); 
 
-  // ... (remaining component code)
+  
 
   const handleDownload = (pdfUrl) => {
     // Use Linking API to open the PDF file in the default viewer
@@ -88,7 +79,6 @@ export default function App() {
                       <TouchableOpacity
                         style={styles.downloadBtn}
                         onPress={() => handleDownload(resource.pdf.url)}
-
                       >
                         <Text>Download</Text>
                       </TouchableOpacity>
@@ -137,7 +127,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#eee",
     paddingHorizontal: 25,
     paddingVertical: 7,
-    marginLeft: -50,
+    // marginLeft: -5,
     marginTop: 30,
     borderRadius: 15,
   },

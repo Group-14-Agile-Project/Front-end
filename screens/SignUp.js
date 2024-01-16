@@ -210,9 +210,9 @@ export default function SignUp() {
           onValueChange={(Falculty) => setFalculty(Falculty)}
           style={styles.pickerInput}
         >
-          <Picker.Item label="Select your Programme" />
-          <Picker.Item label="Computer Science" value="Computer Science" />
-          <Picker.Item label="Information Studies" value="Information Studies" />
+          <Picker.Item label="Select your Falculty" />
+          <Picker.Item label="Faculty of Social Sciences" value="Faculty of Social Sciences" />
+          <Picker.Item label="Faculty of Law" value="Faculty of Law" />
           <Picker.Item label="Faculty of Educational Foundations" value="Faculty of Educational Foundations" />
           <Picker.Item label="Faculty of Science and Technology Education" value="Faculty of Science and Technology Education" />
           <Picker.Item label="Faculty of Art" value="Faculty of Art" />

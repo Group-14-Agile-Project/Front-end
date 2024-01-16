@@ -5,7 +5,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Feather } from '@expo/vector-icons';
 import IconTabs from '../Components/IconTabs';
 
-export default function Home() {
+export default function Home({navigation}) {
+  const handleImage = () => {
+    navigation.navigate('Profile')
+  }
 
   return (
     <LinearGradient colors={['#02080e', '#1e1e1e', '#a59d9e']} style={styles.container}>
@@ -16,8 +19,10 @@ export default function Home() {
             <Text style={{ color: '#fff' }}>What do you want to learn today?</Text>
           </View>
           <View>
-            <View style={styles.profileContainer}>
+            <View onPress={handleImage} style={styles.profileContainer}>
+            <TouchableOpacity onPress={handleImage}>
               <Image style={styles.profileImage} source={require('../assets/mostFav.jpeg')} />
+            </TouchableOpacity>
             </View>
           </View>
         </View>

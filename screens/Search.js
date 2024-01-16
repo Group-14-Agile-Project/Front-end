@@ -58,7 +58,7 @@ export default function Search() {
             setErrors({});
           } else if (response.data.length === 0) {
             // Login failed, show an alert
-            Alert.alert( 'No resources Found!!!!');
+            Alert.alert( 'No resources Found!');
           }  // Log successful response
 
     } catch (error) {
@@ -95,8 +95,8 @@ export default function Search() {
       </View>
 
       <View style={styles.contentContainer}>
-
         <Text style={styles.signUpText}> Search for Resources</Text>
+
         <View style={styles.pickerContainer}>
         <Picker
           selectedValue={programme}
@@ -116,7 +116,6 @@ export default function Search() {
         {
           errors.programme ? <Text style={styles.errorText}>{errors.programme}</Text> : null
         }
-
 
         <View style={styles.pickerContainer}>
         <Picker
@@ -160,7 +159,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     width: 308,
     color: "white",
-    marginTop: 9,
+    marginTop: 10,
     marginLeft: 32,
     height: 42,
     paddingLeft: 0,
@@ -179,6 +178,7 @@ const styles = StyleSheet.create({
   contentContainer: {
     paddingHorizontal: 20,
     paddingTop: 10,
+    gap: 19,
   },
 
   signUpText: {

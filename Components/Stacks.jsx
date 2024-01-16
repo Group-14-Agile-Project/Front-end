@@ -11,6 +11,8 @@ import AboutUs from '../ProfileComponents/AboutUs';
 import SupportScreen from '../ProfileComponents/SupportScreen';
 import ResetPasswordScreen from '../ProfileComponents/ResetPasswordScreen';
 import Search from '../screens/Search';
+import EditProfileScreen from '../screens/EditProfileScreen';
+import MainNotificationScreen from '../screens/MainNotificationScreen';
 
 const Stack = createStackNavigator();
 
@@ -27,7 +29,8 @@ export default function Stacks() {
         <Stack.Screen name='SupportScreen' component={SupportScreen} options={{headerShown: false}} />
         <Stack.Screen name='ResetPasswordScreen' component={ResetPasswordScreen} options={{headerShown: false}} />
         <Stack.Screen name='Search' component={Search} options={{headerShown: false}} />
-
+        <Stack.Screen name='EditProfileScreen' component={EditProfileScreen} options={{headerShown: false}} />
+        <Stack.Screen name='MainNotificationScreen' component={MainNotificationScreen} options={{headerShown: false}} />
     </Stack.Navigator>
   )
 }

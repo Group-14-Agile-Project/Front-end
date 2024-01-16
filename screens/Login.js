@@ -59,17 +59,19 @@ export default function Login() {
           if (response.status === 200) {
             Alert.alert('Success', 'You have successfully logged in.');
             await AsyncStorage.setItem('user', JSON.stringify(response.data.user))
-            
+            await AsyncStorage.setItem('access', JSON.stringify(response.data.token))
+
             navigation.navigate("Search");
             onChangeId("");
             setErrors({});
           } else {
             // Login failed, show an alert
-            Alert.alert('Login Failed', 'Invalid credentials. Please check your ID and PIN.');
+            Alert.alert('Login Failed', 'Invalid credentials. Please check your ID or PIN.');
           }
         } catch (error) {
-          console.error('Axios Error:', error);
-          console.error('Axios Response Data:', error.response?.data);
+          Alert.alert('Login Failed', 'Invalid credentials. Please check your ID or PIN.');
+          // console.error('Axios Error:', error);
+          // console.error('Axios Response Data:', error.response?.data);
           // Handle other errors if needed
         }
 
