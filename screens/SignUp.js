@@ -77,14 +77,21 @@ export default function SignUp() {
             department: dept,
             password: pin,
         });
+        if(response.status === 200){
+          Alert.alert("Success", "Yidana")
+          navigation.navigate('Login')
+        }
+        if(response.status === 208){
+          Alert.alert("Warning", "OFori")
+        }
 
         console.log(response.data);  // Log successful response
     } catch (error) {
         console.error('Axios Error:', error);
         setErrorMessage(error.response?.data?.message?.username[0] || 'An error occurred.');
         console.error('Axios Response Data:', error.response?.data);  // Log response data if available
-    }
-    setCollege('')
+    }finally{
+      setCollege('')
     setDept('')
     setErrorMessage('')
     setFalculty('')
@@ -92,7 +99,9 @@ export default function SignUp() {
     onChangeId('')
     onChangeName('')
     onChangePin('')
-    navigation.navigate('Login')
+    }
+    
+    
 
     }
     
