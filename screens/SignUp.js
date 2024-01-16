@@ -57,9 +57,6 @@ export default function SignUp() {
     errors.dept = "select is required";
   }
 
-  
-
-
   setErrors(errors);
 
   return Object.keys(errors).length === 0;
@@ -100,11 +97,7 @@ export default function SignUp() {
     onChangeName('')
     onChangePin('')
     }
-    
-    
-
     }
-    
 }
 
   // const handleSignUp = () => {
